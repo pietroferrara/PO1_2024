@@ -22,7 +22,7 @@ public class Card {
         if(seme==4) System.out.println("Coppe");
     }
 
-    boolean maggioreOUguale(Card c, int semeBriscola) {
+    boolean maggiore(Card c, int semeBriscola) {
         if(this.seme!=c.seme && c.seme!= semeBriscola)
             return true;
         if(this.seme == semeBriscola && c.seme!= semeBriscola)
