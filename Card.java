@@ -14,6 +14,6 @@ public class Card {
 
 
     public boolean isErrata() {
-        return this.seme.isErrato() || this.figura.isErrata();
+        return this.figura.isErrata();
     }
 }

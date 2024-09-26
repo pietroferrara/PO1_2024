@@ -3,7 +3,7 @@ public class Briscola {
     static Seme semeBriscola;// = new Seme(1);
 
     static {
-        semeBriscola = new Seme(1);
+        semeBriscola = Seme.DENARI;
     }
 
 
@@ -13,28 +13,31 @@ public class Briscola {
             return false;
         }
 
-        if(first.seme!=second.seme && second.seme.value != semeBriscola.value)
+        if(first.seme!=second.seme && second.seme != semeBriscola)
             return true;
-        if(first.seme.value == semeBriscola.value && second.seme.value != semeBriscola.value)
+        if(first.seme == semeBriscola && second.seme != semeBriscola)
             return true;
-        if(first.seme.value !=semeBriscola.value && second.seme.value == semeBriscola.value)
+        if(first.seme !=semeBriscola && second.seme == semeBriscola)
             return false;
-        if(maggiore(first.figura.value, second.figura.value))
+        if(maggiore(first.figura, second.figura))
             return true;
         else return false;
     }
 
-    static private boolean maggiore(int valore, int valore1) {
+    static private boolean maggiore(Figura f1, Figura f2) {
         //assumo valore!=valore1
-        if(valore==1)
-            return true;
-        if(valore==3) {
-            if (valore1 == 1)
-                return false;
-            else return true;
+        switch(f1) {
+            case Figura.ASSO : return true;
+            case Figura.TRE:
+                switch(f2) {
+                    case Figura.ASSO: return false;
+                    default: return true;
+                }
+            default: switch(f2) {
+                case Figura.ASSO: return false;
+                case Figura.TRE: return false;
+                default: return f1.value > f2.value;
+            }
         }
-        if(valore1==3)
-            return false;
-        return valore > valore1;
     }
 }
