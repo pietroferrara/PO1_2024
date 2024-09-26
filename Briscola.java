@@ -1,18 +1,23 @@
 public class Briscola {
 
+    static Seme semeBriscola;// = new Seme(1);
+
+    static {
+        semeBriscola = new Seme(1);
+    }
 
 
-    static boolean maggiore(Card first, Card second, int semeBriscola) {
+    static boolean maggiore(Card first, Card second) {
         if(first.isErrata() || second.isErrata()) {
             System.err.println("Carta errata");
             return false;
         }
 
-        if(first.seme!=second.seme && second.seme.value != semeBriscola)
+        if(first.seme!=second.seme && second.seme.value != semeBriscola.value)
             return true;
-        if(first.seme.value == semeBriscola && second.seme.value != semeBriscola)
+        if(first.seme.value == semeBriscola.value && second.seme.value != semeBriscola.value)
             return true;
-        if(first.seme.value !=semeBriscola && second.seme.value == semeBriscola)
+        if(first.seme.value !=semeBriscola.value && second.seme.value == semeBriscola.value)
             return false;
         if(maggiore(first.figura.value, second.figura.value))
             return true;
