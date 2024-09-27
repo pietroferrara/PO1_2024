@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Mazzo {
     Card[] mazzo;
+    int cartaCorrente;
     Mazzo() {
         mazzo = new Card[40];
         for(int i = 0; i < 40; i++) {
@@ -30,9 +31,18 @@ public class Mazzo {
             }
             mazzo[i] = new Card(seme, figura);
         }
+        cartaCorrente = 39;
     }
     
     void shuffle() {
             Collections.shuffle(Arrays.asList(mazzo));
+    }
+
+    public Card pop() {
+        if(cartaCorrente < 0)
+            return null;
+        Card result = mazzo[cartaCorrente];
+        cartaCorrente--;
+        return result;
     }
 }

@@ -1,13 +1,80 @@
 public class Briscola {
 
-    static Seme semeBriscola;// = new Seme(1);
+    Seme semeBriscola;// = new Seme(1);
 
-    static {
-        semeBriscola = Seme.DENARI;
+    Mazzo mazzo;
+
+     Briscola() {
+        mazzo = new Mazzo();
+     }
+
+     Giocatore partita(Giocatore g1, Giocatore g2) {
+         mazzo.shuffle();
+         boolean accepted = true;
+         accepted = accepted && g1.giveCard(mazzo.pop());
+         accepted = accepted &&g1.giveCard(mazzo.pop());
+         accepted = accepted &&g1.giveCard(mazzo.pop());
+         accepted = accepted &&g2.giveCard(mazzo.pop());
+         accepted = accepted &&g2.giveCard(mazzo.pop());
+         accepted = accepted &&g2.giveCard(mazzo.pop());
+         if( ! accepted) {
+             System.err.println("Il giocatore ha rifiutato la carta");
+             return null;
+         }
+         Card briscola = mazzo.pop();
+         semeBriscola = briscola.seme;
+         Giocatore primoDiMano = g1;
+         Giocatore secondoDiMano = g2;
+         boolean mazzoIsEmpty = false;
+         while(! mazzoIsEmpty) {
+             Giocatore vincitore = giocaMano(primoDiMano, secondoDiMano);
+             if(vincitore == secondoDiMano) {
+                 Giocatore temp = primoDiMano;
+                 primoDiMano = secondoDiMano;
+                 secondoDiMano = temp;
+             }
+             primoDiMano.giveCard(mazzo.pop());
+             Card next = mazzo.pop();
+             if(next!=null)
+                 secondoDiMano.giveCard(next);
+             else {
+                 mazzoIsEmpty = true;
+                 secondoDiMano.giveCard(briscola);
+             }
+         }
+         for(int i = 0; i < 3; i++) {
+             Giocatore vincitore = giocaMano(primoDiMano, secondoDiMano);
+             if(vincitore == secondoDiMano) {
+                 Giocatore temp = primoDiMano;
+                 primoDiMano = secondoDiMano;
+                 secondoDiMano = temp;
+             }
+         }
+         int punteggiog1 = g1.contaPunti();
+         int punteggiog2 = g2.contaPunti();
+         if(punteggiog1 > punteggiog2)
+             return g1;
+         else if(punteggiog1 < punteggiog2)
+             return g2;
+         else return null;
+
+     }
+
+    private Giocatore giocaMano(Giocatore primoDiMano, Giocatore secondoDiMano) {
+        Card prima = primoDiMano.getCard();
+        Card seconda = secondoDiMano.getCard();
+        if(maggiore(prima, seconda)) {
+            primoDiMano.takeCards(prima, seconda);
+            return primoDiMano;
+        }
+        else {
+            secondoDiMano.takeCards(prima, seconda);
+            return secondoDiMano;
+        }
+
     }
 
-
-    static boolean maggiore(Card first, Card second) {
+    boolean maggiore(Card first, Card second) {
         if(first.isErrata() || second.isErrata()) {
             System.err.println("Carta errata");
             return false;
