@@ -1,14 +1,19 @@
+package it.unive.dais.po1.game.gioco;
+
+import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.giocatori.Giocatore;
+
 public class Briscola {
 
-    Seme semeBriscola;// = new Seme(1);
+    private Card briscola;// = new it.dais.unive.po1.carte.carte.Seme(1);
 
-    Mazzo mazzo;
+    private Mazzo mazzo;
 
-     Briscola() {
+     public Briscola() {
         mazzo = new Mazzo();
      }
 
-     Giocatore partita(Giocatore g1, Giocatore g2) {
+     public Giocatore partita(Giocatore g1, Giocatore g2) {
          mazzo.shuffle();
          boolean accepted = true;
          accepted = accepted && g1.giveCard(mazzo.pop());
@@ -21,8 +26,7 @@ public class Briscola {
              System.err.println("Il giocatore ha rifiutato la carta");
              return null;
          }
-         Card briscola = mazzo.pop();
-         semeBriscola = briscola.seme;
+         briscola = mazzo.pop();
          Giocatore primoDiMano = g1;
          Giocatore secondoDiMano = g2;
          boolean mazzoIsEmpty = false;
@@ -80,30 +84,30 @@ public class Briscola {
             return false;
         }
 
-        if(first.seme!=second.seme && second.seme != semeBriscola)
+        if(! first.stessoSeme(second) && ! second.stessoSeme(briscola))
             return true;
-        if(first.seme == semeBriscola && second.seme != semeBriscola)
+        if(first.stessoSeme(briscola) && ! second.stessoSeme(briscola))
             return true;
-        if(first.seme !=semeBriscola && second.seme == semeBriscola)
+        if(! first.stessoSeme(briscola) && second.stessoSeme(briscola))
             return false;
-        if(maggiore(first.figura, second.figura))
+        if(maggiore(first.getValue(), second.getValue()))
             return true;
         else return false;
     }
 
-    static private boolean maggiore(Figura f1, Figura f2) {
+    static private boolean maggiore(int f1, int f2) {
         //assumo valore!=valore1
         switch(f1) {
-            case Figura.ASSO : return true;
-            case Figura.TRE:
+            case 1 : return true;
+            case 3:
                 switch(f2) {
-                    case Figura.ASSO: return false;
+                    case 1: return false;
                     default: return true;
                 }
             default: switch(f2) {
-                case Figura.ASSO: return false;
-                case Figura.TRE: return false;
-                default: return f1.value > f2.value;
+                case 1: return false;
+                case 3: return false;
+                default: return f1 > f2;
             }
         }
     }

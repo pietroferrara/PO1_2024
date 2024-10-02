@@ -1,4 +1,6 @@
-public enum Seme {
+package it.unive.dais.po1.game.carte;
+
+enum Seme {
     DENARI("Denari"), BASTONI("Bastoni"), SPADE("Spade"), COPPE("Coppe");
 
     final String niceName;

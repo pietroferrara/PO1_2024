@@ -1,3 +1,9 @@
+package it.unive.dais.po1.game.gioco;
+
+import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.Figura;
+import it.unive.dais.po1.game.carte.Seme;
+
 import java.util.Collections;
 import java.util.Arrays;
 

@@ -1,3 +1,8 @@
+package it.unive.dais.po1.game.giocatori;
+
+import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.Figura;
+
 public class Giocatore {
     Card[] carte = new Card[3];
     Card[] carteVinte = new Card[40];
