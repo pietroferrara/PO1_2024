@@ -13,8 +13,17 @@ public class Test {
         char c = 'a';
         boolean b = true;*/
         Giocatore g1 = new Giocatore();
+        Giocatore g2 = new Giocatore();
         Briscola partita = new Briscola();
-        partita.partita(g1, g1);
+        Giocatore vincitore = partita.partita(g1, g2);
+        if(vincitore ==null) {
+            System.out.println("Patta");
+        }
+        else if(vincitore==g1) {
+            System.out.println("Ha vinto il primo giocatore");
+        }
+        else
+            System.out.println("Ha vinto il secondo giocatore");
 
 
     }

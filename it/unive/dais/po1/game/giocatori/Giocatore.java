@@ -1,13 +1,30 @@
 package it.unive.dais.po1.game.giocatori;
 
 import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.Figura;
 
+/**
+ * Una classe che rappresenta un giocatore
+ * @author Pietro Ferrara
+ * @version 2.0
+ * @since 1.2
+ */
 public class Giocatore {
-    Card[] carte = new Card[3];
-    Card[] carteVinte = new Card[40];
 
+    /**
+     * Le (massimo) tre carte che il giocatore ha in mano
+     */
+    private Card[] carte = new Card[3];
 
+    /**
+     * Le carte vinte dal giocatore durante la partita
+     */
+    private Card[] carteVinte = new Card[40];
+
+    /**
+     * Riceve la carta passata come parametro
+     * @param pop la carta presa dal mazzo
+     * @return true se la carta viene presa correttamente
+     */
     public boolean giveCard(Card pop) {
         if(carte[0] == null) {
             carte[0] = pop;
@@ -24,6 +41,11 @@ public class Giocatore {
         else return false;
     }
 
+
+    /**
+     * Ritorna una carta e la elimina tra quelle che ha nel mazzo
+     * @return la carta scartata
+     */
     public Card getCard() {
         for(int i = 0; i < 3; i++) {
             if(carte[i] != null) {
@@ -35,6 +57,11 @@ public class Giocatore {
         return null;
     }
 
+    /**
+     * Raccoglie le due carte dal tavolo e le mette tra le carte vinte
+     * @param prima la prima carta sul tavolo
+     * @param seconda la seconda carta sul tavolo
+     */
     public void takeCards(Card prima, Card seconda) {
         int i = 0;
         while(carteVinte[i] != null)
@@ -43,30 +70,11 @@ public class Giocatore {
         carteVinte[i] = seconda;
     }
 
-    public int contaPunti() {
-        int puntiTotali = 0;
-        for(int i = 0; i < 40; i++) {
-            if(carteVinte[i] != null) {
-                switch (carteVinte[i].figura) {
-                    case Figura.ASSO:
-                        puntiTotali += 11;
-                        break;
-                    case Figura.TRE:
-                        puntiTotali += 10;
-                        break;
-                    case Figura.RE:
-                        puntiTotali += 4;
-                        break;
-                    case Figura.CAVALLO:
-                        puntiTotali += 3;
-                        break;
-                    case Figura.FANTE:
-                        puntiTotali += 2;
-                        break;
-                    default:
-                }
-            }
-        }
-        return puntiTotali;
+    /**
+     * Ritorna tutte le carte vinte
+     * @return le carte vinte
+     */
+    public Card[] getCarteVinte() {
+        return this.carteVinte;
     }
 }

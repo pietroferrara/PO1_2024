@@ -1,8 +1,4 @@
-package it.unive.dais.po1.game.gioco;
-
-import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.Figura;
-import it.unive.dais.po1.game.carte.Seme;
+package it.unive.dais.po1.game.carte;
 
 import java.util.Collections;
 import java.util.Arrays;
@@ -11,7 +7,7 @@ import java.util.Arrays;
 public class Mazzo {
     Card[] mazzo;
     int cartaCorrente;
-    Mazzo() {
+    public Mazzo() {
         mazzo = new Card[40];
         for(int i = 0; i < 40; i++) {
             int semevalue = i / 10;
@@ -40,7 +36,7 @@ public class Mazzo {
         cartaCorrente = 39;
     }
     
-    void shuffle() {
+    public void shuffle() {
             Collections.shuffle(Arrays.asList(mazzo));
     }
 

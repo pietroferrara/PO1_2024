@@ -1,6 +1,7 @@
 package it.unive.dais.po1.game.gioco;
 
 import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.Mazzo;
 import it.unive.dais.po1.game.giocatori.Giocatore;
 
 public class Briscola {
@@ -54,8 +55,8 @@ public class Briscola {
                  secondoDiMano = temp;
              }
          }
-         int punteggiog1 = g1.contaPunti();
-         int punteggiog2 = g2.contaPunti();
+         int punteggiog1 = contaPunti(g1.getCarteVinte());
+         int punteggiog2 = contaPunti(g2.getCarteVinte());
          if(punteggiog1 > punteggiog2)
              return g1;
          else if(punteggiog1 < punteggiog2)
@@ -111,4 +112,32 @@ public class Briscola {
             }
         }
     }
+
+    public int contaPunti(Card[] m) {
+        int puntiTotali = 0;
+        for(int i = 0; i < 40; i++) {
+            if(m[i] != null) {
+                switch (m[i].getValue()) {
+                    case 1:
+                        puntiTotali += 11;
+                        break;
+                    case 3:
+                        puntiTotali += 10;
+                        break;
+                    case 10:
+                        puntiTotali += 4;
+                        break;
+                    case 9:
+                        puntiTotali += 3;
+                        break;
+                    case 8:
+                        puntiTotali += 2;
+                        break;
+                    default:
+                }
+            }
+        }
+        return puntiTotali;
+    }
+
 }
