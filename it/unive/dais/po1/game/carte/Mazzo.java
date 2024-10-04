@@ -5,10 +5,19 @@ import java.util.Arrays;
 
 
 public class Mazzo {
-    Card[] mazzo;
-    int cartaCorrente;
+    //@invariant mazzo!=null
+    private Card[] mazzo;
+    //@invariant cartaCorrente>=0 cartaCorrente<mazzo.length
+    private int cartaCorrente;
+
+    /**
+     * Prepara un insieme di 40 carte diverse ordinate
+     *
+     */
+    //ensures \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
     public Mazzo() {
-        mazzo = new Card[40];
+        mazzo = new Card[40];//ensures mazzo!=null
+        //mazzo.length == 40
         for(int i = 0; i < 40; i++) {
             int semevalue = i / 10;
             Seme seme = null;
@@ -33,9 +42,17 @@ public class Mazzo {
             }
             mazzo[i] = new Card(seme, figura);
         }
-        cartaCorrente = 39;
+        //mazzo.length == 40
+        cartaCorrente = 39;//cartaCorrente>=0
+        //cartaCorrente<mazzo.length?
     }
-    
+
+    //@requires <che il mazzo sia pieno>
+    //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
+    //@ensures <che ci siano le stesse carte di prima ma forse in posizioni diverse>
+    //@ensures \forall i >= 0 && i < pre(mazzo).length :
+    //         \exists j >= 0 && j < mazzo.length:
+    //                 pre(mazzo[i])==mazzo[j]
     public void shuffle() {
             Collections.shuffle(Arrays.asList(mazzo));
     }

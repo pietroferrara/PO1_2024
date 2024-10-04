@@ -12,9 +12,27 @@ public class Briscola {
 
      public Briscola() {
         mazzo = new Mazzo();
+         //@invariant mazzo.mazzo!=null
+         //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
      }
 
+    /**
+     * Gioca una partita di briscola
+     *
+     * @param g1 Il primo giocatore diverso da null
+     * @param g2 Il secondo giocatore, diverso dal primo e da null
+     * @return Il giocatore che ha vinto la partita, oppure null se la partita finisce pari
+     */
+
+    /**
+     * @requires g1!=null && g2!=null && g1!=g2 //precondizione
+     * @ensures return==g1 || return==g2 || return==null
+     */
      public Giocatore partita(Giocatore g1, Giocatore g2) {
+        //controllare che g1!=null && g2!=null && g1!=g2
+         //@invariant mazzo.mazzo!=null
+         //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
+         //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
          mazzo.shuffle();
          boolean accepted = true;
          accepted = accepted && g1.giveCard(mazzo.pop());
@@ -62,7 +80,7 @@ public class Briscola {
          else if(punteggiog1 < punteggiog2)
              return g2;
          else return null;
-
+         //return g1||g2||null
      }
 
     private Giocatore giocaMano(Giocatore primoDiMano, Giocatore secondoDiMano) {
@@ -79,7 +97,7 @@ public class Briscola {
 
     }
 
-    boolean maggiore(Card first, Card second) {
+    public boolean maggiore(Card first, Card second) {
         if(first.isErrata() || second.isErrata()) {
             System.err.println("Carta errata");
             return false;
