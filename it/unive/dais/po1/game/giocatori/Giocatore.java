@@ -1,6 +1,7 @@
 package it.unive.dais.po1.game.giocatori;
 
 import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.gioco.Briscola;
 
 /**
  * Una classe che rappresenta un giocatore
@@ -13,12 +14,22 @@ public class Giocatore {
     /**
      * Le (massimo) tre carte che il giocatore ha in mano
      */
-    private Card[] carte = new Card[3];
+    protected Card[] carte = new Card[3];
 
     /**
      * Le carte vinte dal giocatore durante la partita
      */
     private Card[] carteVinte = new Card[40];
+
+    public String getName() {
+        return name;
+    }
+
+    private final String name;
+
+    public Giocatore(String name) {
+        this.name = name;
+    }
 
     /**
      * Riceve la carta passata come parametro
@@ -46,16 +57,7 @@ public class Giocatore {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    public Card getCard() {
-        for(int i = 0; i < 3; i++) {
-            if(carte[i] != null) {
-                Card result = carte[i];
-                carte[i] = null;
-                return result;
-            }
-        }
-        return null;
-    }
+    //public Card getCard(Card otherCard, Briscola game) {}
 
     /**
      * Raccoglie le due carte dal tavolo e le mette tra le carte vinte
@@ -76,5 +78,10 @@ public class Giocatore {
      */
     public Card[] getCarteVinte() {
         return this.carteVinte;
+    }
+
+    public void dropAllCards() {
+        carte = new Card[3];
+        carteVinte = new Card[40];
     }
 }
