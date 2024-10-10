@@ -9,7 +9,7 @@ import it.unive.dais.po1.game.gioco.Briscola;
  * @version 2.0
  * @since 1.2
  */
-public class GiocatoreNaive extends Giocatore {
+final public class GiocatoreNaive extends Giocatore {
     public GiocatoreNaive(String name) {
         super(name);
     }
@@ -18,15 +18,11 @@ public class GiocatoreNaive extends Giocatore {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    public Card getCard(Card otherCard, Briscola game) {
-        for(int i = 0; i < 3; i++) {
-            if(carte[i] != null) {
-                Card result = carte[i];
-                carte[i] = null;
-                return result;
-            }
-        }
-        return null;
+    @Override public Card getCard(Card otherCard, Briscola game) {
+        return super.getFirstCard();
     }
 
- }
+
+
+
+}

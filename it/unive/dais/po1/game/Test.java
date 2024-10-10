@@ -1,11 +1,13 @@
 package it.unive.dais.po1.game;
 
+import it.unive.dais.po1.game.giocatori.Giocatore;
 import it.unive.dais.po1.game.giocatori.avanzati.GiocatoreIntelligente;
 import it.unive.dais.po1.game.giocatori.GiocatoreNaive;
 import it.unive.dais.po1.game.gioco.Briscola;
 
 public class Test {
     public static void mainNaive(String[] args) {
+
         GiocatoreNaive g1 = new GiocatoreNaive("Pietro Ferrara");
         //g1 e' un nuovo oggetto
         GiocatoreNaive g2 = new GiocatoreNaive("Gianluca Caiazza");

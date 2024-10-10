@@ -9,7 +9,9 @@ import it.unive.dais.po1.game.gioco.Briscola;
  * @version 2.0
  * @since 1.2
  */
-public class Giocatore {
+public abstract class Giocatore {
+
+    private static int numberOfPlayers = 0;
 
     /**
      * Le (massimo) tre carte che il giocatore ha in mano
@@ -29,6 +31,23 @@ public class Giocatore {
 
     public Giocatore(String name) {
         this.name = name;
+        Giocatore.incrementPlayers();
+    }
+
+    final static public void incrementPlayers() {
+        numberOfPlayers++;
+    }
+
+
+    final protected Card getFirstCard() {
+        for(int i = 0; i < 3; i++) {
+            if(carte[i] != null) {
+                Card result = carte[i];
+                carte[i] = null;
+                return result;
+            }
+        }
+        return null;
     }
 
     /**
@@ -57,14 +76,14 @@ public class Giocatore {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    //public Card getCard(Card otherCard, Briscola game) {}
+     abstract public Card getCard(Card otherCard, Briscola game);
 
     /**
      * Raccoglie le due carte dal tavolo e le mette tra le carte vinte
      * @param prima la prima carta sul tavolo
      * @param seconda la seconda carta sul tavolo
      */
-    public void takeCards(Card prima, Card seconda) {
+    final public void takeCards(Card prima, Card seconda) {
         int i = 0;
         while(carteVinte[i] != null)
             i++;
@@ -76,11 +95,11 @@ public class Giocatore {
      * Ritorna tutte le carte vinte
      * @return le carte vinte
      */
-    public Card[] getCarteVinte() {
+    final public Card[] getCarteVinte() {
         return this.carteVinte;
     }
 
-    public void dropAllCards() {
+    final public void dropAllCards() {
         carte = new Card[3];
         carteVinte = new Card[40];
     }
