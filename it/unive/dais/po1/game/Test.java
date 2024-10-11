@@ -4,39 +4,26 @@ import it.unive.dais.po1.game.giocatori.Giocatore;
 import it.unive.dais.po1.game.giocatori.avanzati.GiocatoreIntelligente;
 import it.unive.dais.po1.game.giocatori.GiocatoreNaive;
 import it.unive.dais.po1.game.gioco.Briscola;
+import it.unive.dais.po1.game.gioco.Torneo;
 
 public class Test {
-    public static void mainNaive(String[] args) {
-
-        GiocatoreNaive g1 = new GiocatoreNaive("Pietro Ferrara");
-        //g1 e' un nuovo oggetto
-        GiocatoreNaive g2 = new GiocatoreNaive("Gianluca Caiazza");
-
-        //g1 nuovo oggetto, g2 e' un nuovissimo oggetto
-        Briscola partita = new Briscola();
-        //g1 nuovo oggetto, g2 e' un nuovissimo oggetto ->
-        // g1!=null && g2!=null && g1!=g2?
-        GiocatoreNaive vincitore = partita.partita(g1, g2);
-        // return==g1 || return==g2 || return==null
-        if(vincitore ==null) {
-            //return==null
-            System.out.println("Patta");
-        }
-        else if(vincitore==g1) {
-            //return==g1
-            System.out.println("Ha vinto "+g1.getName());
-        }
-        else
-            // return==g2
-            System.out.println("Ha vinto "+g2.getName());
-    }
-
 
     public static void main(String[] args) {
+        Giocatore[] partecipanti = new Giocatore[5];
+        partecipanti[0] = new GiocatoreNaive("Pietro Ferrara");
+        partecipanti[1] = new GiocatoreIntelligente("Gianluca Caiazza");
+        partecipanti[2] = new GiocatoreIntelligente("Alessandra Raffaeta'");
+        partecipanti[3] = new GiocatoreNaive("Marcello Pelillo");
+        partecipanti[4] = new GiocatoreIntelligente("Simonetta Balsamo");
+        Torneo t = new Torneo(partecipanti);
+        t.giocaTorneoBriscola();
+    }
+
+    public static void longBattle() {
         int partite_per_vincere = 150;
-        GiocatoreIntelligente g1 = new GiocatoreIntelligente("Pietro Ferrara");
+        Giocatore g1 = new GiocatoreIntelligente("Pietro Ferrara");
         //g1 e' un nuovo oggetto
-        GiocatoreIntelligente g2 = new GiocatoreIntelligente("Gianluca Caiazza");
+        Giocatore g2 = new GiocatoreNaive("Gianluca Caiazza");
 
 
         int vinte_g1 = 0, vinte_g2=0;
@@ -46,7 +33,7 @@ public class Test {
             Briscola partita = new Briscola();
             //g1 nuovo oggetto, g2 e' un nuovissimo oggetto ->
             // g1!=null && g2!=null && g1!=g2?
-            GiocatoreIntelligente vincitore = partita.partitaIntelligente(g1, g2);
+            Giocatore vincitore = partita.partita(g1, g2);
             // return==g1 || return==g2 || return==null
             if (vincitore == null) {
                 //return==null

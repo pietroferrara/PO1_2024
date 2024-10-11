@@ -1,6 +1,7 @@
 package it.unive.dais.po1.game.giocatori.avanzati;
 
 import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.CarteATerra;
 import it.unive.dais.po1.game.giocatori.Giocatore;
 import it.unive.dais.po1.game.giocatori.GiocatoreNaive;
 import it.unive.dais.po1.game.gioco.Briscola;
@@ -21,13 +22,13 @@ public class GiocatoreIntelligente extends Giocatore {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    @Override public Card getCard(Card otherCard, Briscola game) {
-        if(otherCard != null) {
-            for (int i = 0; i < carte.length; i++) {
-                Card currentCard = carte[i];
+    @Override public Card getCard(CarteATerra carteATerra, Briscola game) {
+        if(carteATerra.contaCarteATerra() == 1) {
+            Card otherCard = carteATerra.seeCard(0);
+            for (int i = 0; i < carte.contaCarteInMano(); i++) {
+                Card currentCard = carte.see(i);
                 if (currentCard != null && game.maggiore(currentCard, otherCard)) {
-                    carte[i] = null;
-                    return currentCard;
+                    return carte.getCard();
                 }
             }
         }

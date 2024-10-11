@@ -1,6 +1,7 @@
 package it.unive.dais.po1.game.giocatori;
 
 import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.CarteATerra;
 import it.unive.dais.po1.game.gioco.Briscola;
 
 /**
@@ -18,7 +19,7 @@ final public class GiocatoreNaive extends Giocatore {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    @Override public Card getCard(Card otherCard, Briscola game) {
+    @Override public Card getCard(CarteATerra otherCard, Briscola game) {
         return super.getFirstCard();
     }
 

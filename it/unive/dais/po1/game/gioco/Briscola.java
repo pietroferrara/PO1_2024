@@ -1,9 +1,10 @@
 package it.unive.dais.po1.game.gioco;
 
 import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.CarteATerra;
+import it.unive.dais.po1.game.carte.CarteRaccolte;
 import it.unive.dais.po1.game.carte.Mazzo;
-import it.unive.dais.po1.game.giocatori.avanzati.GiocatoreIntelligente;
-import it.unive.dais.po1.game.giocatori.GiocatoreNaive;
+import it.unive.dais.po1.game.giocatori.Giocatore;
 
 public class Briscola {
 
@@ -18,95 +19,10 @@ public class Briscola {
      }
 
     /**
-     * Gioca una partita di briscola
-     *
-     * @param g1 Il primo giocatore diverso da null
-     * @param g2 Il secondo giocatore, diverso dal primo e da null
-     * @return Il giocatore che ha vinto la partita, oppure null se la partita finisce pari
-     */
-
-
-    /**
      * @requires g1!=null && g2!=null && g1!=g2 //precondizione
      * @ensures return==g1 || return==g2 || return==null
      */
-    public GiocatoreIntelligente partitaIntelligente(GiocatoreIntelligente g1, GiocatoreIntelligente g2) {
-        //controllare che g1!=null && g2!=null && g1!=g2
-        //@invariant mazzo.mazzo!=null
-        //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
-        //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
-        mazzo.shuffle();
-        boolean accepted = true;
-        accepted = accepted && g1.giveCard(mazzo.pop());
-        accepted = accepted &&g1.giveCard(mazzo.pop());
-        accepted = accepted &&g1.giveCard(mazzo.pop());
-        accepted = accepted &&g2.giveCard(mazzo.pop());
-        accepted = accepted &&g2.giveCard(mazzo.pop());
-        accepted = accepted &&g2.giveCard(mazzo.pop());
-        if( ! accepted) {
-            System.err.println("Il giocatore ha rifiutato la carta");
-            return null;
-        }
-        briscola = mazzo.pop();
-        GiocatoreIntelligente primoDiMano = g1;
-        GiocatoreIntelligente secondoDiMano = g2;
-        boolean mazzoIsEmpty = false;
-        while(! mazzoIsEmpty) {
-            GiocatoreIntelligente vincitore = giocaManoIntelligente(primoDiMano, secondoDiMano);
-            if(vincitore == secondoDiMano) {
-                GiocatoreIntelligente temp = primoDiMano;
-                primoDiMano = secondoDiMano;
-                secondoDiMano = temp;
-            }
-            primoDiMano.giveCard(mazzo.pop());
-            Card next = mazzo.pop();
-            if(next!=null)
-                secondoDiMano.giveCard(next);
-            else {
-                mazzoIsEmpty = true;
-                secondoDiMano.giveCard(briscola);
-            }
-        }
-        for(int i = 0; i < 3; i++) {
-            GiocatoreIntelligente vincitore = giocaManoIntelligente(primoDiMano, secondoDiMano);
-            if(vincitore == secondoDiMano) {
-                GiocatoreIntelligente temp = primoDiMano;
-                primoDiMano = secondoDiMano;
-                secondoDiMano = temp;
-            }
-        }
-        int punteggiog1 = contaPunti(g1.getCarteVinte());
-        int punteggiog2 = contaPunti(g2.getCarteVinte());
-        g1.dropAllCards();
-        g2.dropAllCards();
-        if(punteggiog1 > punteggiog2)
-            return g1;
-        else if(punteggiog1 < punteggiog2)
-            return g2;
-        else return null;
-        //return g1||g2||null
-    }
-
-    private GiocatoreIntelligente giocaManoIntelligente(GiocatoreIntelligente primoDiMano, GiocatoreIntelligente secondoDiMano) {
-        Card prima = primoDiMano.getCard(null, this);
-        Card seconda = secondoDiMano.getCard(prima, this);
-        if(maggiore(prima, seconda)) {
-            primoDiMano.takeCards(prima, seconda);
-            return primoDiMano;
-        }
-        else {
-            secondoDiMano.takeCards(prima, seconda);
-            return secondoDiMano;
-        }
-
-    }
-
-
-    /**
-     * @requires g1!=null && g2!=null && g1!=g2 //precondizione
-     * @ensures return==g1 || return==g2 || return==null
-     */
-     public GiocatoreNaive partita(GiocatoreNaive g1, GiocatoreNaive g2) {
+     public Giocatore partita(Giocatore g1, Giocatore g2) {
         //controllare che g1!=null && g2!=null && g1!=g2
          //@invariant mazzo.mazzo!=null
          //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
@@ -124,13 +40,13 @@ public class Briscola {
              return null;
          }
          briscola = mazzo.pop();
-         GiocatoreNaive primoDiMano = g1;
-         GiocatoreNaive secondoDiMano = g2;
+         Giocatore primoDiMano = g1;
+         Giocatore secondoDiMano = g2;
          boolean mazzoIsEmpty = false;
          while(! mazzoIsEmpty) {
-             GiocatoreNaive vincitore = giocaMano(primoDiMano, secondoDiMano);
+             Giocatore vincitore = giocaMano(primoDiMano, secondoDiMano);
              if(vincitore == secondoDiMano) {
-                 GiocatoreNaive temp = primoDiMano;
+                 Giocatore temp = primoDiMano;
                  primoDiMano = secondoDiMano;
                  secondoDiMano = temp;
              }
@@ -144,15 +60,17 @@ public class Briscola {
              }
          }
          for(int i = 0; i < 3; i++) {
-             GiocatoreNaive vincitore = giocaMano(primoDiMano, secondoDiMano);
+             Giocatore vincitore = giocaMano(primoDiMano, secondoDiMano);
              if(vincitore == secondoDiMano) {
-                 GiocatoreNaive temp = primoDiMano;
+                 Giocatore temp = primoDiMano;
                  primoDiMano = secondoDiMano;
                  secondoDiMano = temp;
              }
          }
          int punteggiog1 = contaPunti(g1.getCarteVinte());
          int punteggiog2 = contaPunti(g2.getCarteVinte());
+         g1.dropAllCards(3, 40);
+         g2.dropAllCards(3, 40);
          if(punteggiog1 > punteggiog2)
              return g1;
          else if(punteggiog1 < punteggiog2)
@@ -161,15 +79,18 @@ public class Briscola {
          //return g1||g2||null
      }
 
-    private GiocatoreNaive giocaMano(GiocatoreNaive primoDiMano, GiocatoreNaive secondoDiMano) {
-        Card prima = primoDiMano.getCard(null, this);
-        Card seconda = secondoDiMano.getCard(prima, this);
+    private Giocatore giocaMano(Giocatore primoDiMano, Giocatore secondoDiMano) {
+        CarteATerra c = new CarteATerra(2);
+        Card prima = primoDiMano.getCard(c, this);
+        c.add(prima);
+        Card seconda = secondoDiMano.getCard(c, this);
+        c.add(seconda);
         if(maggiore(prima, seconda)) {
-            primoDiMano.takeCards(prima, seconda);
+            primoDiMano.takeCards(c);
             return primoDiMano;
         }
         else {
-            secondoDiMano.takeCards(prima, seconda);
+            secondoDiMano.takeCards(c);
             return secondoDiMano;
         }
 
@@ -181,12 +102,12 @@ public class Briscola {
             return false;
         }
 
-        if(! first.stessoSeme(second) && ! second.stessoSeme(briscola))
-            return true;
         if(first.stessoSeme(briscola) && ! second.stessoSeme(briscola))
             return true;
         if(! first.stessoSeme(briscola) && second.stessoSeme(briscola))
             return false;
+        if(! first.stessoSeme(second) && ! second.stessoSeme(briscola))
+            return true;
         if(maggiore(first.getValue(), second.getValue()))
             return true;
         else return false;
@@ -209,11 +130,12 @@ public class Briscola {
         }
     }
 
-    public int contaPunti(Card[] m) {
+    public int contaPunti(CarteRaccolte m) {
         int puntiTotali = 0;
         for(int i = 0; i < 40; i++) {
-            if(m[i] != null) {
-                switch (m[i].getValue()) {
+            Card c = m.getCard(i);
+            if(c != null) {
+                switch (c.getValue()) {
                     case 1:
                         puntiTotali += 11;
                         break;

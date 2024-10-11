@@ -4,20 +4,14 @@ import java.util.Collections;
 import java.util.Arrays;
 
 
-public class Mazzo {
-    //@invariant mazzo!=null
-    private Card[] mazzo;
-    //@invariant cartaCorrente>=0 cartaCorrente<mazzo.length
-    private int cartaCorrente;
-
+public class Mazzo extends ListaCarte{
     /**
      * Prepara un insieme di 40 carte diverse ordinate
      *
      */
     //ensures \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
     public Mazzo() {
-        mazzo = new Card[40];//ensures mazzo!=null
-        //mazzo.length == 40
+        super(40);
         for(int i = 0; i < 40; i++) {
             int semevalue = i / 10;
             Seme seme = null;
@@ -40,11 +34,8 @@ public class Mazzo {
                 case 8: figura = Figura.CAVALLO; break;
                 case 9: figura = Figura.RE; break;
             }
-            mazzo[i] = new Card(seme, figura);
+            super.addCard(new Card(seme, figura));
         }
-        //mazzo.length == 40
-        cartaCorrente = 39;//cartaCorrente>=0
-        //cartaCorrente<mazzo.length?
     }
 
     //@requires <che il mazzo sia pieno>
@@ -54,14 +45,10 @@ public class Mazzo {
     //         \exists j >= 0 && j < mazzo.length:
     //                 pre(mazzo[i])==mazzo[j]
     public void shuffle() {
-            Collections.shuffle(Arrays.asList(mazzo));
+            Collections.shuffle(Arrays.asList(super.carte));
     }
 
     public Card pop() {
-        if(cartaCorrente < 0)
-            return null;
-        Card result = mazzo[cartaCorrente];
-        cartaCorrente--;
-        return result;
+        return super.getFirstCard();
     }
 }
