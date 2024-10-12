@@ -12,6 +12,7 @@ class ListaCarte {
         for(int i = 1; i < carte.length; i++) {
             carte[i-1]=carte[i];
         }
+        carte[carte.length-1] = null;
         return temp;
     }
 
