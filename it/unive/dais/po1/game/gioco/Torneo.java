@@ -16,7 +16,7 @@ public class Torneo {
         for (int i = 0; i < partecipanti.length; i++) {
             for(int j=0; j< partecipanti.length; j++) {
                 if(i!=j) {
-                    Giocatore vincitore = new BriscolaADue().partita(partecipanti[i], partecipanti[j]);
+                    Giocatore vincitore = new BriscolaADue(partecipanti[i], partecipanti[j]).partita();
                     if(vincitore!=null)
                         System.out.println("Ha vinto "+vincitore.getName());
                     else System.out.println("Patta tra "+partecipanti[i].getName()+" e "+partecipanti[j].getName());

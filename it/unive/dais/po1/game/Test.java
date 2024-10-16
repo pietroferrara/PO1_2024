@@ -8,6 +8,8 @@ import it.unive.dais.po1.game.gioco.BriscolaADue;
 import it.unive.dais.po1.game.gioco.BriscolaAQuattro;
 import it.unive.dais.po1.game.gioco.Torneo;
 
+import java.util.Random;
+
 public class Test {
 
     public static void main(String[] args) {
@@ -20,7 +22,14 @@ public class Test {
         //Torneo t = new Torneo(partecipanti);
         //t.giocaTorneoBriscola();
 
-        new BriscolaAQuattro().partita(partecipanti[0], partecipanti[1], partecipanti[2], partecipanti[3]);
+        BriscolaAQuattro b1 = new BriscolaAQuattro(partecipanti[0], partecipanti[1], partecipanti[2], partecipanti[3]);
+
+        Briscola b = new Random().nextBoolean() ?
+                    new BriscolaADue(partecipanti[0], partecipanti[1]) :
+                    new BriscolaAQuattro(partecipanti[0], partecipanti[1], partecipanti[2], partecipanti[3]);
+        b.partita();
+        BriscolaADue b2 = new BriscolaADue(partecipanti[0], partecipanti[1]);
+        b2.prende(1, 2);
     }
 
     public static void longBattle() {
@@ -34,10 +43,10 @@ public class Test {
 
         while(vinte_g1!=partite_per_vincere && vinte_g2!=partite_per_vincere) {
             //g1 nuovo oggetto, g2 e' un nuovissimo oggetto
-            BriscolaADue partita = new BriscolaADue();
+            BriscolaADue partita = new BriscolaADue(g1, g2);
             //g1 nuovo oggetto, g2 e' un nuovissimo oggetto ->
             // g1!=null && g2!=null && g1!=g2?
-            Giocatore vincitore = partita.partita(g1, g2);
+            Giocatore vincitore = partita.partita();
             // return==g1 || return==g2 || return==null
             if (vincitore == null) {
                 //return==null

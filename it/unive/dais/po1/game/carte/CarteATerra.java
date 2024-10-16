@@ -1,6 +1,6 @@
 package it.unive.dais.po1.game.carte;
 
-public class CarteATerra extends ListaCarte {
+public class CarteATerra extends ListaCarte implements Addable {
     public CarteATerra(int length) {
         super(length);
     }
@@ -16,7 +16,8 @@ public class CarteATerra extends ListaCarte {
         return carte[i];
     }
 
-    public void add(Card c) {
+    public boolean add(Card c) {
         super.addCard(c);
+        return true;
     }
 }

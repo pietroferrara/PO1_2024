@@ -19,6 +19,8 @@ abstract public class Briscola {
      }
 
 
+     abstract public Giocatore partita();
+
      public boolean prende(Card first, Card second) {
          if(first.isErrata() || second.isErrata()) {
              System.err.println("Carta errata");

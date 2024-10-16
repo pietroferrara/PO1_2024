@@ -6,12 +6,19 @@ import it.unive.dais.po1.game.giocatori.Giocatore;
 
 public class BriscolaADue extends Briscola {
 
+    private Giocatore g1, g2;
+
+    public BriscolaADue(Giocatore g1, Giocatore g2) {
+        this.g1 = g1;
+        this.g2 = g2;
+    }
+
 
     /**
      * @requires g1!=null && g2!=null && g1!=g2 //precondizione
      * @ensures return==g1 || return==g2 || return==null
      */
-    public Giocatore partita(Giocatore g1, Giocatore g2) {
+    public Giocatore partita() {
         //controllare che g1!=null && g2!=null && g1!=g2
         //@invariant mazzo.mazzo!=null
         //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
@@ -62,6 +69,14 @@ public class BriscolaADue extends Briscola {
             return g2;
         else return null;
         //return g1||g2||null
+    }
+
+    public Giocatore getLastPlayer() {
+        return g2;
+    }
+
+    public boolean prende(int i, int j) {
+        return false;
     }
 
     private Giocatore giocaMano(Giocatore primoDiMano, Giocatore secondoDiMano) {
