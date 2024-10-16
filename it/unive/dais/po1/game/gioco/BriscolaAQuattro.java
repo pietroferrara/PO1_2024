@@ -55,13 +55,6 @@ public class BriscolaAQuattro extends Briscola {
         }
     }
 
-    private boolean getInitialCards(Giocatore g1, boolean accepted) {
-        accepted = accepted && g1.giveCard(mazzo.pop());
-        accepted = accepted && g1.giveCard(mazzo.pop());
-        accepted = accepted && g1.giveCard(mazzo.pop());
-        return accepted;
-    }
-
     private Giocatore giocaMano(TavoloQuattroGiocatori tavolo) {
         Giocatore primoDiMano = tavolo.get(0);
         Giocatore secondoDiMano = tavolo.get(1);
@@ -79,7 +72,10 @@ public class BriscolaAQuattro extends Briscola {
         c.add(quarta);
         if(maggiore(prima, seconda) && maggiore(prima, quarta)) {
             primoDiMano.takeCards(c);
-            tavolo.setPrimoDiMano(0);
+            if(prende(terza, prima))
+                tavolo.setPrimoDiMano(2);
+            //else
+            //    tavolo.setPrimoDiMano(0);
             return primoDiMano;
         }
         else if(prende(seconda, prima) && maggiore(seconda, terza)){

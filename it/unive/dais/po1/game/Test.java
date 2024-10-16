@@ -4,6 +4,8 @@ import it.unive.dais.po1.game.giocatori.Giocatore;
 import it.unive.dais.po1.game.giocatori.avanzati.GiocatoreIntelligente;
 import it.unive.dais.po1.game.giocatori.GiocatoreNaive;
 import it.unive.dais.po1.game.gioco.Briscola;
+import it.unive.dais.po1.game.gioco.BriscolaADue;
+import it.unive.dais.po1.game.gioco.BriscolaAQuattro;
 import it.unive.dais.po1.game.gioco.Torneo;
 
 public class Test {
@@ -12,11 +14,13 @@ public class Test {
         Giocatore[] partecipanti = new Giocatore[5];
         partecipanti[0] = new GiocatoreNaive("Pietro Ferrara");
         partecipanti[1] = new GiocatoreIntelligente("Gianluca Caiazza");
-        partecipanti[2] = new GiocatoreIntelligente("Alessandra Raffaeta'");
-        partecipanti[3] = new GiocatoreNaive("Marcello Pelillo");
+        partecipanti[2] = new GiocatoreNaive("Marcello Pelillo");
+        partecipanti[3] = new GiocatoreIntelligente("Alessandra Raffaeta'");
         partecipanti[4] = new GiocatoreIntelligente("Simonetta Balsamo");
-        Torneo t = new Torneo(partecipanti);
-        t.giocaTorneoBriscola();
+        //Torneo t = new Torneo(partecipanti);
+        //t.giocaTorneoBriscola();
+
+        new BriscolaAQuattro().partita(partecipanti[0], partecipanti[1], partecipanti[2], partecipanti[3]);
     }
 
     public static void longBattle() {
@@ -30,7 +34,7 @@ public class Test {
 
         while(vinte_g1!=partite_per_vincere && vinte_g2!=partite_per_vincere) {
             //g1 nuovo oggetto, g2 e' un nuovissimo oggetto
-            Briscola partita = new Briscola();
+            BriscolaADue partita = new BriscolaADue();
             //g1 nuovo oggetto, g2 e' un nuovissimo oggetto ->
             // g1!=null && g2!=null && g1!=g2?
             Giocatore vincitore = partita.partita(g1, g2);

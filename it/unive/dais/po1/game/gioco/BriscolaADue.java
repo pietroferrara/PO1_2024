@@ -18,12 +18,8 @@ public class BriscolaADue extends Briscola {
         //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
         mazzo.shuffle();
         boolean accepted = true;
-        accepted = accepted && g1.giveCard(mazzo.pop());
-        accepted = accepted &&g1.giveCard(mazzo.pop());
-        accepted = accepted &&g1.giveCard(mazzo.pop());
-        accepted = accepted &&g2.giveCard(mazzo.pop());
-        accepted = accepted &&g2.giveCard(mazzo.pop());
-        accepted = accepted &&g2.giveCard(mazzo.pop());
+        accepted = super.getInitialCards(g1, accepted);
+        accepted = super.getInitialCards(g2, accepted);
         if( ! accepted) {
             System.err.println("Il giocatore ha rifiutato la carta");
             return null;

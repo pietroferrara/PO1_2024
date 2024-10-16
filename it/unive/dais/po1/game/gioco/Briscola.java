@@ -93,4 +93,12 @@ abstract public class Briscola {
         return puntiTotali;
     }
 
+    protected boolean getInitialCards(Giocatore g1, boolean accepted) {
+        accepted = accepted && g1.giveCard(mazzo.pop());
+        accepted = accepted && g1.giveCard(mazzo.pop());
+        accepted = accepted && g1.giveCard(mazzo.pop());
+        return accepted;
+    }
+
+
 }
