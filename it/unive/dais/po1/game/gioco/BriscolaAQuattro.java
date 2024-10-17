@@ -1,8 +1,8 @@
 package it.unive.dais.po1.game.gioco;
 
+import it.unive.dais.po1.game.carte.Addable;
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.CarteATerra;
-import it.unive.dais.po1.game.carte.ListaCarte;
 import it.unive.dais.po1.game.giocatori.Giocatore;
 
 public class BriscolaAQuattro extends Briscola {
@@ -13,11 +13,6 @@ public class BriscolaAQuattro extends Briscola {
         this.g2 = g2;
         this.g3 = g3;
         this.g4 = g4;
-    }
-
-    private static boolean add(ListaCarte l, Card c) {
-        if(c==null) return false;
-        else { l.add(c); return true; }
     }
 
     public Giocatore getLastPlayer() {
@@ -81,13 +76,13 @@ public class BriscolaAQuattro extends Briscola {
 
         CarteATerra c = new CarteATerra(4);
         Card prima = primoDiMano.getCard(c, this);
-        c.add(prima);
+        add(c, prima);
         Card seconda = secondoDiMano.getCard(c, this);
-        c.add(seconda);
+        add(c, seconda);
         Card terza = terzoDiMano.getCard(c, this);
-        c.add(terza);
+        add(c, terza);
         Card quarta = quartoDiMano.getCard(c, this);
-        c.add(quarta);
+        add(c, quarta);
         if(maggiore(prima, seconda) && maggiore(prima, quarta)) {
             primoDiMano.takeCards(c);
             if(prende(terza, prima))

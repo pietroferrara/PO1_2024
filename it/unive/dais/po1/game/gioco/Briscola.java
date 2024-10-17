@@ -1,9 +1,6 @@
 package it.unive.dais.po1.game.gioco;
 
-import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.CarteATerra;
-import it.unive.dais.po1.game.carte.CarteRaccolte;
-import it.unive.dais.po1.game.carte.Mazzo;
+import it.unive.dais.po1.game.carte.*;
 import it.unive.dais.po1.game.giocatori.Giocatore;
 
 abstract public class Briscola {
@@ -70,7 +67,7 @@ abstract public class Briscola {
     public static int contaPunti(CarteRaccolte m) {
         int puntiTotali = 0;
         for(int i = 0; i < 40; i++) {
-            Card c = m.getCard(i);
+            Card c = m.get(i);
             if(c != null) {
                 switch (c.getValue()) {
                     case 1:
@@ -100,6 +97,22 @@ abstract public class Briscola {
         accepted = accepted && g1.giveCard(mazzo.pop());
         accepted = accepted && g1.giveCard(mazzo.pop());
         return accepted;
+    }
+
+
+    protected static boolean add(Addable l, Card c) {
+         if(l instanceof AvailableSpots){//controllo del tipo dinamico
+             //qui so che l e' un AvailableSpots
+             AvailableSpots l1 = (AvailableSpots) l;//cast del tipo
+            if (l1.acceptMoreItems() == false)
+                return false;
+        }
+
+        if(c==null) {
+            System.err.println("Trying to add a null card to a ListaCarte");
+            return false;
+        }
+        else { l.add(c); return true; }
     }
 
 

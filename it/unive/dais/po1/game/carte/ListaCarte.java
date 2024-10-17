@@ -16,11 +16,15 @@ class ListaCarte {
         return temp;
     }
 
-    protected void addCard(Card card) {
+    protected boolean addCard(Card card) {
+        if(carte[carte.length-1]!=null) {
+            return false;
+        }
         for(int i = carte.length-1; i > 0; i--) {
             carte[i]=carte[i-1];
         }
         carte[0] = card;
+        return true;
     }
 
 }

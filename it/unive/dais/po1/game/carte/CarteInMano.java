@@ -1,6 +1,6 @@
 package it.unive.dais.po1.game.carte;
 
-public class CarteInMano extends ListaCarte {
+public class CarteInMano extends ListaCarte implements Addable, Countable, Readable {
     public CarteInMano(int length) {
         super(length);
     }
@@ -9,22 +9,19 @@ public class CarteInMano extends ListaCarte {
         return super.getFirstCard();
     }
 
-    public boolean receiveCard(Card c) {
-        if(carte[0]!=null && carte[1]!=null && carte[2]!=null)
-            return false;
-        super.addCard(c);
-        return true;
+
+    public boolean add(Card c) {
+        return super.addCard(c);
     }
 
-
-    public int contaCarteInMano() {
+    public int count() {
         int i = 0;
         while(i < carte.length && carte[i]!=null)
             i++;
         return i;
     }
 
-    public Card see(int index) {
+    public Card get(int index) {
         return carte[index];
     }
 }

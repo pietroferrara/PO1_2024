@@ -23,10 +23,10 @@ public class GiocatoreIntelligente extends Giocatore {
      * @return la carta scartata
      */
     @Override public Card getCard(CarteATerra carteATerra, Briscola game) {
-        if(carteATerra.contaCarteATerra() == 1) {
-            Card otherCard = carteATerra.seeCard(0);
-            for (int i = 0; i < carte.contaCarteInMano(); i++) {
-                Card currentCard = carte.see(i);
+        if(carteATerra.count() == 1) {
+            Card otherCard = carteATerra.get(0);
+            for (int i = 0; i < carte.count(); i++) {
+                Card currentCard = carte.get(i);
                 if (currentCard != null && game.maggiore(currentCard, otherCard)) {
                     return carte.getCard();
                 }

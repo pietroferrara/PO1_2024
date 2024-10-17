@@ -52,7 +52,7 @@ public abstract class Giocatore {
      * @return true se la carta viene presa correttamente
      */
     public boolean giveCard(Card pop) {
-        return carte.receiveCard(pop);
+        return carte.add(pop);
     }
 
 
@@ -68,8 +68,8 @@ public abstract class Giocatore {
      * @param seconda la seconda carta sul tavolo
      */
     final public void takeCards(CarteATerra carte) {
-        for(int i = 0; i < carte.contaCarteATerra(); i++)
-            carteVinte.add(carte.seeCard(i));
+        for(int i = 0; i < carte.count(); i++)
+            carteVinte.add(carte.get(i));
     }
 
     /**
