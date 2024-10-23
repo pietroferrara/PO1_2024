@@ -2,6 +2,9 @@ package it.unive.dais.po1.methoddispatch;
 
 public class A {
 
+    B foo12(A a) {
+        return new B();
+    }
 
     void foo2(A a1, A a2) {
         System.out.println("A.foo2(A, A)");

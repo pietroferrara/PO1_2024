@@ -6,6 +6,11 @@ public class B extends A {
         System.out.println("B.int");
     }
 
+    @Override B foo12(A a) {
+        System.out.println("foo12");
+        return this;
+    }
+
 
     static void foo2() {
         System.out.println("B static .foo2()");
