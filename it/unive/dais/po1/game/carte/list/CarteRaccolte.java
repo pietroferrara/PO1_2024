@@ -1,4 +1,6 @@
-package it.unive.dais.po1.game.carte;
+package it.unive.dais.po1.game.carte.list;
+
+import it.unive.dais.po1.game.carte.Card;
 
 public class CarteRaccolte extends ListaCarte implements Addable, Readable, AvailableSpots {
     public CarteRaccolte(int length) {

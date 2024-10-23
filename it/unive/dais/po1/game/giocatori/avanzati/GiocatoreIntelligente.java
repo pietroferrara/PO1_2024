@@ -1,9 +1,8 @@
 package it.unive.dais.po1.game.giocatori.avanzati;
 
 import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.CarteATerra;
+import it.unive.dais.po1.game.carte.list.CarteATerra;
 import it.unive.dais.po1.game.giocatori.Giocatore;
-import it.unive.dais.po1.game.giocatori.GiocatoreNaive;
 import it.unive.dais.po1.game.gioco.Briscola;
 
 /**

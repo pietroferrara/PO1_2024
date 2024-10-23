@@ -1,8 +1,7 @@
 package it.unive.dais.po1.game.gioco;
 
-import it.unive.dais.po1.game.carte.Addable;
 import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.CarteATerra;
+import it.unive.dais.po1.game.carte.list.CarteATerra;
 import it.unive.dais.po1.game.giocatori.Giocatore;
 
 public class BriscolaAQuattro extends Briscola {

@@ -1,20 +1,31 @@
 package it.unive.dais.po1.game.carte;
 
+import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
+
 /**
  * Una carta del gioco
  */
-public class Card {
-    private final Seme seme; //1: Denari, 2: Bastoni, 3: Spade, 4: Coppe
-    private final Figura figura; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re
+public class Card<S extends Seme, F extends Figura> {
+    private final S seme; //1: Denari, 2: Bastoni, 3: Spade, 4: Coppe
+    private final F figura; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re
 
     /**
      * Una carta
      * @param seme seme della carta
      * @param figura figura della carta
      */
-    public Card(Seme seme, Figura figura) {
+    public Card(S seme, F figura) {
         this.seme = seme;
         this.figura = figura;
+    }
+
+    public Card() {
+        this.seme = null;
+        this.figura = null;
+    }
+
+    public S getSeme() {
+        return seme;
     }
 
 
@@ -42,6 +53,11 @@ public class Card {
      *          (1 per asso, 10 per re)
      */
     public int getValue() {
-        return this.figura.value;
+        return this.figura.getValue();
+    }
+
+    public <T> T identity(T parametro, int a, S t, FiguraTrevigiana l) {
+        T a1 = parametro;
+        return parametro;
     }
 }

@@ -1,12 +1,14 @@
-package it.unive.dais.po1.game.carte;
+package it.unive.dais.po1.game.carte.list;
 
-public class CarteATerra extends ListaCarte implements Addable, Countable, Readable {
+import it.unive.dais.po1.game.carte.Card;
+
+public class CarteATerra<C extends Card> extends ListaCarte<C> implements Addable, Countable, Readable {
     public CarteATerra(int length) {
         super(length);
     }
 
 
-    public boolean add(Card c) {
+    public boolean add(C c) {
         return super.addCard(c);
     }
 

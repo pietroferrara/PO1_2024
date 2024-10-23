@@ -1,16 +1,20 @@
 package it.unive.dais.po1.game.gioco;
 
 import it.unive.dais.po1.game.carte.*;
+import it.unive.dais.po1.game.carte.list.Addable;
+import it.unive.dais.po1.game.carte.list.AvailableSpots;
+import it.unive.dais.po1.game.carte.list.CarteRaccolte;
+import it.unive.dais.po1.game.carte.trevigiane.MazzoTrevigiano;
 import it.unive.dais.po1.game.giocatori.Giocatore;
 
 abstract public class Briscola {
 
     protected Card briscola;// = new it.dais.unive.po1.carte.carte.Seme(1);
 
-    protected Mazzo mazzo;
+    protected MazzoTrevigiano mazzo;
 
      public Briscola() {
-        mazzo = new Mazzo();
+        mazzo = new MazzoTrevigiano();
          //@invariant mazzo.mazzo!=null
          //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
      }
