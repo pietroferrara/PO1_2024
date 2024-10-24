@@ -1,6 +1,8 @@
 package it.unive.dais.po1.game.carte.list;
 
 import it.unive.dais.po1.game.carte.Card;
+import it.unive.dais.po1.game.carte.Figura;
+import it.unive.dais.po1.game.carte.Seme;
 import it.unive.dais.po1.game.carte.francesi.FiguraFrancese;
 import it.unive.dais.po1.game.carte.francesi.SemeFrancese;
 

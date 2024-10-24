@@ -28,7 +28,7 @@ public class MazzoFrancese extends Mazzo<Card<SemeFrancese,FiguraFrancese>> {
                 case 3: seme = SemeFrancese.QUADRI; break;
             }
             FiguraFrancese figura = null;
-            switch(i % 10) {
+            switch(i % 13) {
                 case 0: figura = FiguraFrancese.ASSO; break;
                 case 1: figura = FiguraFrancese.DUE; break;
                 case 2: figura = FiguraFrancese.TRE; break;
