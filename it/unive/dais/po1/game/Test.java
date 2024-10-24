@@ -13,6 +13,7 @@ import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscolaNaive;
 import it.unive.dais.po1.game.gioco.briscola.Briscola;
 import it.unive.dais.po1.game.gioco.briscola.BriscolaADue;
 import it.unive.dais.po1.game.gioco.briscola.BriscolaAQuattro;
+import it.unive.dais.po1.methoddispatch.A;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -20,17 +21,19 @@ import java.util.Random;
 public class Test {
 
     public static void main(String[] args) {
+        ArrayList<Seme> a = new ArrayList<>();
+        Seme[] semi = new Seme[10];
+        semi[0] = SemeTrevigiano.BASTONI;
+        semi[1] = SemeFrancese.CUORI;
+        Seme s = semi[0];
 
-        ArrayList<Seme> list = new ArrayList<>();
-        list.add(SemeTrevigiano.BASTONI);
-        list.add(SemeFrancese.CUORI);
-        ArrayList<SemeTrevigiano> listtrevigiana = new ArrayList<>();
-        listtrevigiana.add(SemeTrevigiano.BASTONI);
-        //listtrevigiana.add(SemeFrancese.CUORI);
-        listtrevigiana = list;
-        listtrevigiana.add(SemeTrevigiano.BASTONI);
-        listtrevigiana.add(SemeFrancese.FIORI);
-        SemeTrevigiano s = listtrevigiana.get(1);
+        SemeTrevigiano[] semit = new SemeTrevigiano[10];
+        semit[0] = SemeTrevigiano.BASTONI;
+        semit[1] = SemeTrevigiano.DENARI;
+        Seme[] seme = semit;
+        //seme[0] = SemeFrancese.PICCHE;
+        SemeTrevigiano s1 = semit[0];
+
 
 
 
