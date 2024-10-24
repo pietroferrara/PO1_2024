@@ -1,24 +1,25 @@
-package it.unive.dais.po1.game.gioco;
+package it.unive.dais.po1.game.gioco.briscola;
 
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.list.CarteATerra;
-import it.unive.dais.po1.game.giocatori.Giocatore;
+import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
+import it.unive.dais.po1.game.gioco.TavoloQuattroGiocatori;
 
 public class BriscolaAQuattro extends Briscola {
-    private Giocatore g1, g2, g3, g4;
+    private GiocatoreBriscola g1, g2, g3, g4;
 
-    public BriscolaAQuattro(Giocatore g1, Giocatore g2, Giocatore g3, Giocatore g4) {
+    public BriscolaAQuattro(GiocatoreBriscola g1, GiocatoreBriscola g2, GiocatoreBriscola g3, GiocatoreBriscola g4) {
         this.g1 = g1;
         this.g2 = g2;
         this.g3 = g3;
         this.g4 = g4;
     }
 
-    public Giocatore getLastPlayer() {
+    public GiocatoreBriscola getLastPlayer() {
         return g4;
     }
 
-    public Giocatore partita() {
+    public GiocatoreBriscola partita() {
         TavoloQuattroGiocatori tavolo = new TavoloQuattroGiocatori(g1, g2, g3, g4);
         mazzo.shuffle();
         boolean accepted = true;
@@ -27,13 +28,13 @@ public class BriscolaAQuattro extends Briscola {
         accepted = accepted && getInitialCards(g3, accepted);
         accepted = accepted && getInitialCards(g4, accepted);
         if( ! accepted) {
-            System.err.println("Il giocatore ha rifiutato la carta");
+            System.err.println("Il GiocatoreBriscola ha rifiutato la carta");
             return null;
         }
         briscola = mazzo.pop();
         boolean mazzoIsEmpty = false;
         while(! mazzoIsEmpty) {
-            Giocatore vincitore = giocaMano(tavolo);
+            GiocatoreBriscola vincitore = giocaMano(tavolo);
             tavolo.get(0).giveCard(mazzo.pop());
             tavolo.get(1).giveCard(mazzo.pop());
             tavolo.get(2).giveCard(mazzo.pop());
@@ -67,11 +68,11 @@ public class BriscolaAQuattro extends Briscola {
         }
     }
 
-    private Giocatore giocaMano(TavoloQuattroGiocatori tavolo) {
-        Giocatore primoDiMano = tavolo.get(0);
-        Giocatore secondoDiMano = tavolo.get(1);
-        Giocatore terzoDiMano = tavolo.get(2);
-        Giocatore quartoDiMano = tavolo.get(3);
+    private GiocatoreBriscola giocaMano(TavoloQuattroGiocatori tavolo) {
+        GiocatoreBriscola primoDiMano = tavolo.get(0);
+        GiocatoreBriscola secondoDiMano = tavolo.get(1);
+        GiocatoreBriscola terzoDiMano = tavolo.get(2);
+        GiocatoreBriscola quartoDiMano = tavolo.get(3);
 
         CarteATerra c = new CarteATerra(4);
         Card prima = primoDiMano.getCard(c, this);

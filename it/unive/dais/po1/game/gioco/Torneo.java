@@ -1,13 +1,14 @@
 package it.unive.dais.po1.game.gioco;
 
-import it.unive.dais.po1.game.giocatori.Giocatore;
+import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
+import it.unive.dais.po1.game.gioco.briscola.BriscolaADue;
 
 public class Torneo {
 
-    private final Giocatore[] partecipanti;
+    private final GiocatoreBriscola[] partecipanti;
 
 
-    public Torneo(Giocatore[] partecipanti) {
+    public Torneo(GiocatoreBriscola[] partecipanti) {
         this.partecipanti = partecipanti;
     }
 
@@ -16,7 +17,7 @@ public class Torneo {
         for (int i = 0; i < partecipanti.length; i++) {
             for(int j=0; j< partecipanti.length; j++) {
                 if(i!=j) {
-                    Giocatore vincitore = new BriscolaADue(partecipanti[i], partecipanti[j]).partita();
+                    GiocatoreBriscola vincitore = new BriscolaADue(partecipanti[i], partecipanti[j]).partita();
                     if(vincitore!=null)
                         System.out.println("Ha vinto "+vincitore.getName());
                     else System.out.println("Patta tra "+partecipanti[i].getName()+" e "+partecipanti[j].getName());

@@ -11,7 +11,7 @@ public class ListaCarte<C extends Card> {
 
     protected ListaCarte(int length) {
         this.carte =
-                (C[]) Array.newInstance(C, length);
+                (C[]) Array.newInstance(Card.class, length);
     }
 
     protected C getFirstCard() {

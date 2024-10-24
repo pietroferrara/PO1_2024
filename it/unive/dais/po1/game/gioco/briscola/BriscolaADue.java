@@ -1,14 +1,14 @@
-package it.unive.dais.po1.game.gioco;
+package it.unive.dais.po1.game.gioco.briscola;
 
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.list.CarteATerra;
-import it.unive.dais.po1.game.giocatori.Giocatore;
+import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 
 public class BriscolaADue extends Briscola {
 
-    private Giocatore g1, g2;
+    private GiocatoreBriscola g1, g2;
 
-    public BriscolaADue(Giocatore g1, Giocatore g2) {
+    public BriscolaADue(GiocatoreBriscola g1, GiocatoreBriscola g2) {
         this.g1 = g1;
         this.g2 = g2;
     }
@@ -18,7 +18,7 @@ public class BriscolaADue extends Briscola {
      * @requires g1!=null && g2!=null && g1!=g2 //precondizione
      * @ensures return==g1 || return==g2 || return==null
      */
-    public Giocatore partita() {
+    public GiocatoreBriscola partita() {
         //controllare che g1!=null && g2!=null && g1!=g2
         //@invariant mazzo.mazzo!=null
         //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
@@ -28,17 +28,17 @@ public class BriscolaADue extends Briscola {
         accepted = super.getInitialCards(g1, accepted);
         accepted = super.getInitialCards(g2, accepted);
         if( ! accepted) {
-            System.err.println("Il giocatore ha rifiutato la carta");
+            System.err.println("Il GiocatoreBriscola ha rifiutato la carta");
             return null;
         }
         briscola = mazzo.pop();
-        Giocatore primoDiMano = g1;
-        Giocatore secondoDiMano = g2;
+        GiocatoreBriscola primoDiMano = g1;
+        GiocatoreBriscola secondoDiMano = g2;
         boolean mazzoIsEmpty = false;
         while(! mazzoIsEmpty) {
-            Giocatore vincitore = giocaMano(primoDiMano, secondoDiMano);
+            GiocatoreBriscola vincitore = giocaMano(primoDiMano, secondoDiMano);
             if(vincitore == secondoDiMano) {
-                Giocatore temp = primoDiMano;
+                GiocatoreBriscola temp = primoDiMano;
                 primoDiMano = secondoDiMano;
                 secondoDiMano = temp;
             }
@@ -52,9 +52,9 @@ public class BriscolaADue extends Briscola {
             }
         }
         for(int i = 0; i < 3; i++) {
-            Giocatore vincitore = giocaMano(primoDiMano, secondoDiMano);
+            GiocatoreBriscola vincitore = giocaMano(primoDiMano, secondoDiMano);
             if(vincitore == secondoDiMano) {
-                Giocatore temp = primoDiMano;
+                GiocatoreBriscola temp = primoDiMano;
                 primoDiMano = secondoDiMano;
                 secondoDiMano = temp;
             }
@@ -71,7 +71,7 @@ public class BriscolaADue extends Briscola {
         //return g1||g2||null
     }
 
-    public Giocatore getLastPlayer() {
+    public GiocatoreBriscola getLastPlayer() {
         return g2;
     }
 
@@ -79,7 +79,7 @@ public class BriscolaADue extends Briscola {
         return false;
     }
 
-    private Giocatore giocaMano(Giocatore primoDiMano, Giocatore secondoDiMano) {
+    private GiocatoreBriscola giocaMano(GiocatoreBriscola primoDiMano, GiocatoreBriscola secondoDiMano) {
         CarteATerra c = new CarteATerra(2);
         Card prima = primoDiMano.getCard(c, this);
         c.add(prima);

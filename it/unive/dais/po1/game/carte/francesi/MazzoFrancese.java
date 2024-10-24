@@ -2,6 +2,7 @@ package it.unive.dais.po1.game.carte.francesi;
 
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.list.ListaCarte;
+import it.unive.dais.po1.game.carte.list.Mazzo;
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
 
@@ -9,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 
-public class MazzoFrancese extends ListaCarte<Card<SemeFrancese,FiguraFrancese>> {
+public class MazzoFrancese extends Mazzo<Card<SemeFrancese,FiguraFrancese>> {
     /**
      * Prepara un insieme di 40 carte diverse ordinate
      *
@@ -45,19 +46,5 @@ public class MazzoFrancese extends ListaCarte<Card<SemeFrancese,FiguraFrancese>>
             Card<SemeFrancese, FiguraFrancese> carta = new Card<SemeFrancese, FiguraFrancese>(seme, figura);
             super.addCard(carta);
         }
-    }
-
-    //@requires <che il mazzo sia pieno>
-    //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
-    //@ensures <che ci siano le stesse carte di prima ma forse in posizioni diverse>
-    //@ensures \forall i >= 0 && i < pre(mazzo).length :
-    //         \exists j >= 0 && j < mazzo.length:
-    //                 pre(mazzo[i])==mazzo[j]
-    public void shuffle() {
-            Collections.shuffle(Arrays.asList(super.carte));
-    }
-
-    public Card pop() {
-        return super.getFirstCard();
     }
 }

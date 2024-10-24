@@ -1,15 +1,17 @@
-package it.unive.dais.po1.game.gioco;
+package it.unive.dais.po1.game.gioco.briscola;
 
 import it.unive.dais.po1.game.carte.*;
 import it.unive.dais.po1.game.carte.list.Addable;
 import it.unive.dais.po1.game.carte.list.AvailableSpots;
 import it.unive.dais.po1.game.carte.list.CarteRaccolte;
+import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 import it.unive.dais.po1.game.carte.trevigiane.MazzoTrevigiano;
-import it.unive.dais.po1.game.giocatori.Giocatore;
+import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
+import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 
 abstract public class Briscola {
 
-    protected Card briscola;// = new it.dais.unive.po1.carte.carte.Seme(1);
+    protected Card<SemeTrevigiano, FiguraTrevigiana> briscola;// = new it.dais.unive.po1.carte.carte.Seme(1);
 
     protected MazzoTrevigiano mazzo;
 
@@ -20,7 +22,7 @@ abstract public class Briscola {
      }
 
 
-     abstract public Giocatore partita();
+     abstract public GiocatoreBriscola partita();
 
      public boolean prende(Card first, Card second) {
          if(first.isErrata() || second.isErrata()) {
@@ -96,7 +98,7 @@ abstract public class Briscola {
         return puntiTotali;
     }
 
-    protected boolean getInitialCards(Giocatore g1, boolean accepted) {
+    protected boolean getInitialCards(GiocatoreBriscola g1, boolean accepted) {
         accepted = accepted && g1.giveCard(mazzo.pop());
         accepted = accepted && g1.giveCard(mazzo.pop());
         accepted = accepted && g1.giveCard(mazzo.pop());

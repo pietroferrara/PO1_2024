@@ -2,12 +2,12 @@ package it.unive.dais.po1.game.carte.list;
 
 import it.unive.dais.po1.game.carte.Card;
 
-public class CarteRaccolte extends ListaCarte implements Addable, Readable, AvailableSpots {
+public class CarteRaccolte<C extends Card> extends ListaCarte<C> implements Addable<C>, Readable, AvailableSpots {
     public CarteRaccolte(int length) {
         super(length);
     }
 
-    public boolean add(Card c) {
+    public boolean add(C c) {
         return super.addCard(c);
     }
 

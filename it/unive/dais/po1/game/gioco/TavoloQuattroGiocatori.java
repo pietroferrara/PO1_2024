@@ -1,12 +1,12 @@
 package it.unive.dais.po1.game.gioco;
 
-import it.unive.dais.po1.game.giocatori.Giocatore;
+import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 
 
-class TavoloQuattroGiocatori {
-    private Giocatore[] giocatori = new Giocatore[4];
+public class TavoloQuattroGiocatori {
+    private GiocatoreBriscola[] giocatori = new GiocatoreBriscola[4];
 
-    TavoloQuattroGiocatori(Giocatore g1, Giocatore g2, Giocatore g3, Giocatore g4) {
+    public TavoloQuattroGiocatori(GiocatoreBriscola g1, GiocatoreBriscola g2, GiocatoreBriscola g3, GiocatoreBriscola g4) {
         giocatori[0] = g1;
         giocatori[1] = g2;
         giocatori[2] = g3;
@@ -14,7 +14,7 @@ class TavoloQuattroGiocatori {
     }
 
     public void setPrimoDiMano(int i) {
-        Giocatore[] newOrder = new Giocatore[4];
+        GiocatoreBriscola[] newOrder = new GiocatoreBriscola[4];
         for(int j = 0; j<4; j++) {
             if(j-i>=0)
                 newOrder[j-i] = giocatori[j];
@@ -23,7 +23,7 @@ class TavoloQuattroGiocatori {
         this.giocatori = newOrder;
     }
 
-    public Giocatore get(int i) {
+    public GiocatoreBriscola get(int i) {
         return giocatori[i];
     }
 }

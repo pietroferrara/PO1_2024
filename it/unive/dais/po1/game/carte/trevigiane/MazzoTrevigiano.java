@@ -2,12 +2,13 @@ package it.unive.dais.po1.game.carte.trevigiane;
 
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.list.ListaCarte;
+import it.unive.dais.po1.game.carte.list.Mazzo;
 
 import java.util.Collections;
 import java.util.Arrays;
 
 
-public class MazzoTrevigiano extends ListaCarte<Card<SemeTrevigiano,FiguraTrevigiana>> {
+public class MazzoTrevigiano extends Mazzo<Card<SemeTrevigiano,FiguraTrevigiana>> {
     /**
      * Prepara un insieme di 40 carte diverse ordinate
      *
@@ -43,17 +44,4 @@ public class MazzoTrevigiano extends ListaCarte<Card<SemeTrevigiano,FiguraTrevig
         }
     }
 
-    //@requires <che il mazzo sia pieno>
-    //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
-    //@ensures <che ci siano le stesse carte di prima ma forse in posizioni diverse>
-    //@ensures \forall i >= 0 && i < pre(mazzo).length :
-    //         \exists j >= 0 && j < mazzo.length:
-    //                 pre(mazzo[i])==mazzo[j]
-    public void shuffle() {
-            Collections.shuffle(Arrays.asList(super.carte));
-    }
-
-    public Card pop() {
-        return super.getFirstCard();
-    }
 }

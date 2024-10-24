@@ -2,7 +2,7 @@ package it.unive.dais.po1.game.carte.list;
 
 import it.unive.dais.po1.game.carte.Card;
 
-public class CarteATerra<C extends Card> extends ListaCarte<C> implements Addable, Countable, Readable {
+public class CarteATerra<C extends Card> extends ListaCarte<C> implements Addable<C>, Countable, Readable {
     public CarteATerra(int length) {
         super(length);
     }

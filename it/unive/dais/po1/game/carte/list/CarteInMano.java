@@ -2,7 +2,7 @@ package it.unive.dais.po1.game.carte.list;
 
 import it.unive.dais.po1.game.carte.Card;
 
-public class CarteInMano extends ListaCarte implements Addable, Countable, Readable {
+public class CarteInMano<C extends Card> extends ListaCarte<C> implements Addable<C>, Countable, Readable {
     public CarteInMano(int length) {
         super(length);
     }
@@ -12,7 +12,7 @@ public class CarteInMano extends ListaCarte implements Addable, Countable, Reada
     }
 
 
-    public boolean add(Card c) {
+    public boolean add(C c) {
         return super.addCard(c);
     }
 
