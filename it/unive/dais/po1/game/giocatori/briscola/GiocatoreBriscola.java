@@ -22,12 +22,12 @@ public abstract class GiocatoreBriscola {
     /**
      * Le (massimo) tre carte che il giocatore ha in mano
      */
-    protected CarteInMano<Card<SemeTrevigiano, FiguraTrevigiana>> carte = new CarteInMano<>(3);
+    protected CarteInMano<Card<SemeTrevigiano, FiguraTrevigiana>> carte = new CarteInMano<>();
 
     /**
      * Le carte vinte dal giocatore durante la partita
      */
-    private CarteRaccolte<Card<SemeTrevigiano, FiguraTrevigiana>> carteVinte = new CarteRaccolte<>(40);
+    private CarteRaccolte<Card<SemeTrevigiano, FiguraTrevigiana>> carteVinte = new CarteRaccolte<>();
 
     public String getName() {
         return name;
@@ -54,8 +54,8 @@ public abstract class GiocatoreBriscola {
      * @param pop la carta presa dal mazzo
      * @return true se la carta viene presa correttamente
      */
-    public boolean giveCard(Card<SemeTrevigiano, FiguraTrevigiana> pop) {
-        return carte.add(pop);
+    public void giveCard(Card<SemeTrevigiano, FiguraTrevigiana> pop) {
+        carte.add(pop);
     }
 
 
@@ -83,8 +83,8 @@ public abstract class GiocatoreBriscola {
         return this.carteVinte;
     }
 
-    final public void dropAllCards(int carteInMano, int carteVinte) {
-        this.carte = new CarteInMano<>(carteInMano);
-        this.carteVinte = new CarteRaccolte<>(carteVinte);
+    final public void dropAllCards() {
+        this.carte = new CarteInMano<>();
+        this.carteVinte = new CarteRaccolte<>();
     }
 }

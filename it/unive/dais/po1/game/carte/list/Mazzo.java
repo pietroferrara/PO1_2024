@@ -1,18 +1,13 @@
 package it.unive.dais.po1.game.carte.list;
 
 import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.Figura;
-import it.unive.dais.po1.game.carte.Seme;
-import it.unive.dais.po1.game.carte.francesi.FiguraFrancese;
-import it.unive.dais.po1.game.carte.francesi.SemeFrancese;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 public abstract class Mazzo<C extends Card> extends ListaCarte<C> {
 
-    protected Mazzo(int length) {
-        super(length);
+    protected Mazzo() {
+        super();
     }
 
     //@requires <che il mazzo sia pieno>
@@ -27,5 +22,22 @@ public abstract class Mazzo<C extends Card> extends ListaCarte<C> {
 
     public C pop() {
         return super.getFirstCard();
+    }
+
+    @Override
+    public String toString() {
+        return "Ci sono "+this.contaCarte()+" carte\n";
+    }
+
+    private int contaCarte() {
+        return this.carte.size();
+    }
+
+    public SortedSet<C> getSet() {
+        SortedSet<C> set = new TreeSet<C>();
+        for(int i = 0; i < carte.size(); i++) {
+            set.add(carte.get(i));
+        }
+        return set;
     }
 }

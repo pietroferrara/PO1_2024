@@ -2,10 +2,12 @@ package it.unive.dais.po1.game.carte;
 
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 
+import java.util.Objects;
+
 /**
  * Una carta del gioco
  */
-public class Card<S extends Seme, F extends Figura> {
+public class Card<S extends Seme, F extends Figura> implements Cloneable {
     private final S seme; //1: Denari, 2: Bastoni, 3: Spade, 4: Coppe
     private final F figura; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re
 
@@ -59,5 +61,49 @@ public class Card<S extends Seme, F extends Figura> {
     public <T> T identity(T parametro, int a, S t, FiguraTrevigiana l) {
         T a1 = parametro;
         return parametro;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Card card)) return false;
+        boolean result = Objects.equals(seme, card.seme) && Objects.equals(figura, card.figura);
+        return result;
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Card<>(seme, figura);
+    }
+
+    @Override
+    public int hashCode() {
+        /*if(seme==null)
+            return 0;
+        return seme.hashCode();*/
+        return Objects.hash(seme, figura);
+    }
+
+    /*@Override
+    public boolean equals(Object obj) {
+        if(! (obj instanceof Card))
+            return false;
+        Card c = (Card) obj;
+        if(this.seme == null && c.seme!=null)
+            return false;
+        if(this.figura == null && c.figura!=null)
+            return false;
+        if(this.seme == null && c.seme==null) {
+            if(this.figura==null && c.figura==null)
+                return true;
+            else return this.figura.equals(c.figura);
+        }
+        else {...}
+        return this.seme.equals(c.seme) && this.figura.equals(c.figura);
+    }*/
+
+    @Override
+    public String toString() {
+        return this.figura+" di "+this.seme;
     }
 }

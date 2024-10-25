@@ -15,7 +15,7 @@ public class MazzoTrevigiano extends Mazzo<Card<SemeTrevigiano,FiguraTrevigiana>
      */
     //ensures \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
     public MazzoTrevigiano() {
-        super(40);
+        super();
         for(int i = 0; i < 40; i++) {
             int semevalue = i / 10;
             SemeTrevigiano seme = null;

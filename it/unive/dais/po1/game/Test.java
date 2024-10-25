@@ -6,6 +6,7 @@ import it.unive.dais.po1.game.carte.Seme;
 import it.unive.dais.po1.game.carte.francesi.FiguraFrancese;
 import it.unive.dais.po1.game.carte.francesi.SemeFrancese;
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
+import it.unive.dais.po1.game.carte.trevigiane.MazzoTrevigiano;
 import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 import it.unive.dais.po1.game.giocatori.briscola.avanzati.GiocatoreBriscolaIntelligente;
@@ -15,28 +16,15 @@ import it.unive.dais.po1.game.gioco.briscola.BriscolaADue;
 import it.unive.dais.po1.game.gioco.briscola.BriscolaAQuattro;
 import it.unive.dais.po1.methoddispatch.A;
 
-import java.util.ArrayList;
-import java.util.Random;
+import java.util.*;
 
 public class Test {
 
-    public static void main(String[] args) {
-        ArrayList<Seme> a = new ArrayList<>();
-        Seme[] semi = new Seme[10];
-        semi[0] = SemeTrevigiano.BASTONI;
-        semi[1] = SemeFrancese.CUORI;
-        Seme s = semi[0];
+    public static void main(String[] args) throws CloneNotSupportedException {
 
-        SemeTrevigiano[] semit = new SemeTrevigiano[10];
-        semit[0] = SemeTrevigiano.BASTONI;
-        semit[1] = SemeTrevigiano.DENARI;
-        Seme[] seme = semit;
-        //seme[0] = SemeFrancese.PICCHE;
-        SemeTrevigiano s1 = semit[0];
-
-
-
-
+        MazzoTrevigiano m = new MazzoTrevigiano();
+        Set<Card<SemeTrevigiano,FiguraTrevigiana>> s = m.getSet();
+        System.out.println(s);
 
         /*GiocatoreBriscola[] partecipanti = new GiocatoreBriscola[5];
         partecipanti[0] = new GiocatoreBriscolaNaive("Pietro Ferrara");
@@ -47,14 +35,8 @@ public class Test {
         //Torneo t = new Torneo(partecipanti);
         //t.giocaTorneoBriscola();
 
-        BriscolaAQuattro b1 = new BriscolaAQuattro(partecipanti[0], partecipanti[1], partecipanti[2], partecipanti[3]);
-
-        Briscola b = new Random().nextBoolean() ?
-                    new BriscolaADue(partecipanti[0], partecipanti[1]) :
-                    new BriscolaAQuattro(partecipanti[0], partecipanti[1], partecipanti[2], partecipanti[3]);
-        b.partita();
         BriscolaADue b2 = new BriscolaADue(partecipanti[0], partecipanti[1]);
-        b2.prende(1, 2);*/
+        b2.partita();*/
     }
 
     public static void longBattle() {

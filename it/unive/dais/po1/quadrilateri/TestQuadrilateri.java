@@ -1,8 +1,4 @@
-package it.unive.dais.po1;
-
-import it.unive.dais.po1.quadrilateri.Quadrato;
-import it.unive.dais.po1.quadrilateri.Quadrilatero;
-import it.unive.dais.po1.quadrilateri.Rectangle;
+package it.unive.dais.po1.quadrilateri;
 
 import java.util.Random;
 

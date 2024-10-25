@@ -17,9 +17,9 @@ public class MazzoFrancese extends Mazzo<Card<SemeFrancese,FiguraFrancese>> {
      */
     //ensures \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
     public MazzoFrancese() {
-        super(40);
-        for(int i = 0; i < 40; i++) {
-            int semevalue = i / 10;
+        super();
+        for(int i = 0; i < 52; i++) {
+            int semevalue = i / 13;
             SemeFrancese seme = null;
             switch(semevalue) {
                 case 0 : seme = SemeFrancese.CUORI; break;

@@ -24,13 +24,8 @@ public class BriscolaADue extends Briscola {
         //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
         //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
         mazzo.shuffle();
-        boolean accepted = true;
-        accepted = super.getInitialCards(g1, accepted);
-        accepted = super.getInitialCards(g2, accepted);
-        if( ! accepted) {
-            System.err.println("Il GiocatoreBriscola ha rifiutato la carta");
-            return null;
-        }
+        super.getInitialCards(g1);
+
         briscola = mazzo.pop();
         GiocatoreBriscola primoDiMano = g1;
         GiocatoreBriscola secondoDiMano = g2;
@@ -61,8 +56,8 @@ public class BriscolaADue extends Briscola {
         }
         int punteggiog1 = contaPunti(g1.getCarteVinte());
         int punteggiog2 = contaPunti(g2.getCarteVinte());
-        g1.dropAllCards(3, 40);
-        g2.dropAllCards(3, 40);
+        g1.dropAllCards();
+        g2.dropAllCards();
         if(punteggiog1 > punteggiog2)
             return g1;
         else if(punteggiog1 < punteggiog2)
@@ -80,7 +75,7 @@ public class BriscolaADue extends Briscola {
     }
 
     private GiocatoreBriscola giocaMano(GiocatoreBriscola primoDiMano, GiocatoreBriscola secondoDiMano) {
-        CarteATerra c = new CarteATerra(2);
+        CarteATerra c = new CarteATerra();
         Card prima = primoDiMano.getCard(c, this);
         c.add(prima);
         Card seconda = secondoDiMano.getCard(c, this);

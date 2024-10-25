@@ -22,15 +22,11 @@ public class BriscolaAQuattro extends Briscola {
     public GiocatoreBriscola partita() {
         TavoloQuattroGiocatori tavolo = new TavoloQuattroGiocatori(g1, g2, g3, g4);
         mazzo.shuffle();
-        boolean accepted = true;
-        accepted = accepted && getInitialCards(g1, accepted);
-        accepted = accepted && getInitialCards(g2, accepted);
-        accepted = accepted && getInitialCards(g3, accepted);
-        accepted = accepted && getInitialCards(g4, accepted);
-        if( ! accepted) {
-            System.err.println("Il GiocatoreBriscola ha rifiutato la carta");
-            return null;
-        }
+        getInitialCards(g1);
+        getInitialCards(g2);
+        getInitialCards(g3);
+        getInitialCards(g4);
+
         briscola = mazzo.pop();
         boolean mazzoIsEmpty = false;
         while(! mazzoIsEmpty) {
@@ -50,10 +46,10 @@ public class BriscolaAQuattro extends Briscola {
             giocaMano(tavolo);
         int punteggiog1 = contaPunti(g1.getCarteVinte()) + contaPunti(g3.getCarteVinte());
         int punteggiog2 = contaPunti(g2.getCarteVinte()) + contaPunti(g4.getCarteVinte());
-        g1.dropAllCards(3, 40);
-        g2.dropAllCards(3, 40);
-        g3.dropAllCards(3, 40);
-        g4.dropAllCards(3, 40);
+        g1.dropAllCards();
+        g2.dropAllCards();
+        g3.dropAllCards();
+        g4.dropAllCards();
         if(punteggiog1 > punteggiog2) {
             System.out.println("Ha vinto la squadra 1");
             return g1;
@@ -74,7 +70,7 @@ public class BriscolaAQuattro extends Briscola {
         GiocatoreBriscola terzoDiMano = tavolo.get(2);
         GiocatoreBriscola quartoDiMano = tavolo.get(3);
 
-        CarteATerra c = new CarteATerra(4);
+        CarteATerra c = new CarteATerra();
         Card prima = primoDiMano.getCard(c, this);
         add(c, prima);
         Card seconda = secondoDiMano.getCard(c, this);

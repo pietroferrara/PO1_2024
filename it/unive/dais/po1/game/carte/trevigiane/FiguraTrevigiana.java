@@ -7,6 +7,8 @@ public enum FiguraTrevigiana implements Figura {
 
     public int value; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re
 
+    Enum e;
+
     FiguraTrevigiana(int i) {
         if(i >= 1 && i <= 10)
             this.value = i;
