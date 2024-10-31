@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Una carta del gioco
  */
-public class Card<S extends Seme, F extends Figura> implements Cloneable {
+public class Card<S extends Seme, F extends Figura> implements Cloneable, Comparable<Card<S, F>> {
     private final S seme; //1: Denari, 2: Bastoni, 3: Spade, 4: Coppe
     private final F figura; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re
 
@@ -105,5 +105,27 @@ public class Card<S extends Seme, F extends Figura> implements Cloneable {
     @Override
     public String toString() {
         return this.figura+" di "+this.seme;
+    }
+
+
+
+    @Override
+    public int compareTo(Card<S, F> o) {
+        if(this.equals(o))
+            return 0;
+        S seme1 = this.seme;
+        S seme2 = o.seme;
+        int i = seme1.compareTo(seme2);
+        if(i != 0)
+            return i;
+        F figura1 = this.figura;
+        F figura2 = o.figura;
+        i = figura1.compareTo(figura2);
+        if(i!=0)
+            return i;
+        else {
+            System.err.println("This should not be possible");
+        }
+        return Integer.MAX_VALUE;
     }
 }

@@ -2,7 +2,7 @@ package it.unive.dais.po1.game.carte.trevigiane;
 
 import it.unive.dais.po1.game.carte.Figura;
 
-public enum FiguraTrevigiana implements Figura {
+public enum FiguraTrevigiana implements Figura<FiguraTrevigiana> {
     ASSO(1), DUE(2), TRE(3), QUATTRO(4), CINQUE(5), SEI(6), SETTE(7), FANTE(8), CAVALLO(9), RE(10);
 
     public int value; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re

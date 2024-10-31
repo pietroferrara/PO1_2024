@@ -2,7 +2,7 @@ package it.unive.dais.po1.game.carte.francesi;
 
 import it.unive.dais.po1.game.carte.Seme;
 
-public enum SemeFrancese implements Seme {
+public enum SemeFrancese implements Seme<SemeFrancese> {
     PICCHE("Picche"), CUORI("Cuori"), QUADRI("Quadri"), FIORI("Fiori");
 
     final String niceName;

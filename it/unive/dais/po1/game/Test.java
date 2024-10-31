@@ -22,7 +22,17 @@ public class Test {
 
     public static void main(String[] args) throws CloneNotSupportedException {
 
-        MazzoTrevigiano m = new MazzoTrevigiano();
+        double f = 12.1;
+        int i = 18;
+        long l = 12;
+        //i = f;
+        f = (double) i;
+        l = (long) i;
+        i = (int) l;
+
+
+
+        /*MazzoTrevigiano m = new MazzoTrevigiano();
         Set<Card<SemeTrevigiano,FiguraTrevigiana>> s = m.getSet();
         System.out.println(s);
 

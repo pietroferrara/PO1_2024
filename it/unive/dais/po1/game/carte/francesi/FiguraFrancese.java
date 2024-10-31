@@ -2,7 +2,7 @@ package it.unive.dais.po1.game.carte.francesi;
 
 import it.unive.dais.po1.game.carte.Figura;
 
-public enum FiguraFrancese implements Figura {
+public enum FiguraFrancese implements Figura<FiguraFrancese> {
     ASSO(1), DUE(2), TRE(3), QUATTRO(4), CINQUE(5), SEI(6), SETTE(7), OTTO(8), NOVE(9), DIECI(10), JACK(11), REGINA(12), RE(13);
 
     public int value; //1: Asso, 2-7: 2-7, 8: Fante, 9: Cavallo, 10: Re
