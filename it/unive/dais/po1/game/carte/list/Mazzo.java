@@ -40,4 +40,8 @@ public abstract class Mazzo<C extends Card> extends ListaCarte<C> {
         }
         return set;
     }
+
+    public boolean isEmpty() {
+        return this.carte.isEmpty();
+    }
 }

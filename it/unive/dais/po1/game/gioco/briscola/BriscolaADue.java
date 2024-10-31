@@ -25,6 +25,7 @@ public class BriscolaADue extends Briscola {
         //@requires \forall i >= 0 && i < mazzo.length : mazzo[i]!=null
         mazzo.shuffle();
         super.getInitialCards(g1);
+        super.getInitialCards(g2);
 
         briscola = mazzo.pop();
         GiocatoreBriscola primoDiMano = g1;
@@ -38,13 +39,11 @@ public class BriscolaADue extends Briscola {
                 secondoDiMano = temp;
             }
             primoDiMano.giveCard(mazzo.pop());
-            Card next = mazzo.pop();
-            if(next!=null)
-                secondoDiMano.giveCard(next);
-            else {
+            if(mazzo.isEmpty()) {
                 mazzoIsEmpty = true;
                 secondoDiMano.giveCard(briscola);
             }
+            else secondoDiMano.giveCard(mazzo.pop());
         }
         for(int i = 0; i < 3; i++) {
             GiocatoreBriscola vincitore = giocaMano(primoDiMano, secondoDiMano);

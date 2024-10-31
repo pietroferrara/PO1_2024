@@ -72,7 +72,7 @@ abstract public class Briscola {
 
     public static int contaPunti(CarteRaccolte m) {
         int puntiTotali = 0;
-        for(int i = 0; i < 40; i++) {
+        for(int i = 0; i < m.size(); i++) {
             Card c = m.get(i);
             if(c != null) {
                 switch (c.getValue()) {

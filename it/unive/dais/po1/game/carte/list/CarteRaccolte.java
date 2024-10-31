@@ -11,6 +11,10 @@ public class CarteRaccolte<C extends Card> extends ListaCarte<C> implements Adda
         return carte.get(index);
     }
 
+    public int size() {
+        return carte.size();
+    }
+
     public boolean acceptMoreItems() {
         return true;
     }
