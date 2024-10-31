@@ -21,16 +21,9 @@ import java.util.*;
 public class Test {
 
     public static void main(String[] args) throws CloneNotSupportedException {
+        List<Number> list = null;//new ArrayList<Number>();
 
-        double f = 12.1;
-        int i = 18;
-        long l = 12;
-        //i = f;
-        f = (double) i;
-        l = (long) i;
-        i = (int) l;
-
-
+        list.add(1);
 
         /*MazzoTrevigiano m = new MazzoTrevigiano();
         Set<Card<SemeTrevigiano,FiguraTrevigiana>> s = m.getSet();
