@@ -20,7 +20,7 @@ public abstract class Mazzo<C extends Card> extends ListaCarte<C> {
         Collections.shuffle(Arrays.asList(super.carte));
     }
 
-    public C pop() {
+    public C pop() throws MissingCardException {
         return super.getFirstCard();
     }
 

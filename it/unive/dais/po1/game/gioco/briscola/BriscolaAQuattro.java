@@ -2,6 +2,7 @@ package it.unive.dais.po1.game.gioco.briscola;
 
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.list.CarteATerra;
+import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 import it.unive.dais.po1.game.gioco.TavoloQuattroGiocatori;
 
@@ -19,7 +20,7 @@ public class BriscolaAQuattro extends Briscola {
         return g4;
     }
 
-    public GiocatoreBriscola partita() {
+    public GiocatoreBriscola partita() throws MissingCardException {
         TavoloQuattroGiocatori tavolo = new TavoloQuattroGiocatori(g1, g2, g3, g4);
         mazzo.shuffle();
         getInitialCards(g1);
@@ -64,7 +65,7 @@ public class BriscolaAQuattro extends Briscola {
         }
     }
 
-    private GiocatoreBriscola giocaMano(TavoloQuattroGiocatori tavolo) {
+    private GiocatoreBriscola giocaMano(TavoloQuattroGiocatori tavolo) throws MissingCardException {
         GiocatoreBriscola primoDiMano = tavolo.get(0);
         GiocatoreBriscola secondoDiMano = tavolo.get(1);
         GiocatoreBriscola terzoDiMano = tavolo.get(2);

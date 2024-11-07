@@ -5,6 +5,8 @@ import it.unive.dais.po1.game.carte.Figura;
 import it.unive.dais.po1.game.carte.Seme;
 import it.unive.dais.po1.game.carte.francesi.FiguraFrancese;
 import it.unive.dais.po1.game.carte.francesi.SemeFrancese;
+import it.unive.dais.po1.game.carte.list.CarteInMano;
+import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 import it.unive.dais.po1.game.carte.trevigiane.MazzoTrevigiano;
 import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
@@ -20,10 +22,33 @@ import java.util.*;
 
 public class Test {
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-        List<Number> list = null;//new ArrayList<Number>();
+    public static void main(String[] args) {
 
-        list.add(1);
+
+        try {
+            //apro risorsa 1
+            foo();
+        }
+        catch(StackOverflowError e) {
+            System.err.print("Too many method invocations");
+            e.printStackTrace();
+        }
+        finally {
+            System.out.println("Chiudo la risorsa 1");
+        }
+
+
+        /*CarteInMano<Card<SemeTrevigiano, Figura>> inmano = new CarteInMano<>();
+        //inmano.add(new Card<>(SemeTrevigiano.BASTONI, FiguraTrevigiana.ASSO));
+        Card nextCard = null;
+        while(nextCard == null) {
+            try {
+                nextCard = inmano.getCard();
+            } catch (MissingCardException e) {
+                System.err.println("Ti sei dimenticato una carta?");
+                inmano.add(new Card<>(SemeTrevigiano.BASTONI, FiguraTrevigiana.ASSO));
+            }
+        }*/
 
         /*MazzoTrevigiano m = new MazzoTrevigiano();
         Set<Card<SemeTrevigiano,FiguraTrevigiana>> s = m.getSet();
@@ -42,7 +67,11 @@ public class Test {
         b2.partita();*/
     }
 
-    public static void longBattle() {
+    private static void foo() {
+        throw new NullPointerException();
+    }
+
+    public static void longBattle() throws MissingCardException {
         int partite_per_vincere = 150;
         GiocatoreBriscola g1 = new GiocatoreBriscolaIntelligente("Pietro Ferrara");
         //g1 e' un nuovo oggetto

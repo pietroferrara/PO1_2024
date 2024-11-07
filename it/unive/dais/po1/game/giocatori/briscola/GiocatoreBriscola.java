@@ -5,6 +5,7 @@ import it.unive.dais.po1.game.carte.francesi.FiguraFrancese;
 import it.unive.dais.po1.game.carte.list.CarteATerra;
 import it.unive.dais.po1.game.carte.list.CarteInMano;
 import it.unive.dais.po1.game.carte.list.CarteRaccolte;
+import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
 import it.unive.dais.po1.game.gioco.briscola.Briscola;
@@ -45,7 +46,7 @@ public abstract class GiocatoreBriscola {
     }
 
 
-    final protected Card<SemeTrevigiano, FiguraTrevigiana> getFirstCard() {
+    final protected Card<SemeTrevigiano, FiguraTrevigiana> getFirstCard() throws MissingCardException {
         return carte.getCard();
     }
 
@@ -63,7 +64,7 @@ public abstract class GiocatoreBriscola {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-     abstract public Card<SemeTrevigiano, FiguraTrevigiana> getCard(CarteATerra<Card<SemeTrevigiano, FiguraTrevigiana>> otherCard, Briscola game);
+     abstract public Card<SemeTrevigiano, FiguraTrevigiana> getCard(CarteATerra<Card<SemeTrevigiano, FiguraTrevigiana>> otherCard, Briscola game) throws MissingCardException;
 
     /**
      * Raccoglie le due carte dal tavolo e le mette tra le carte vinte

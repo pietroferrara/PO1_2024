@@ -2,6 +2,7 @@ package it.unive.dais.po1.game.gioco.briscola;
 
 import it.unive.dais.po1.game.carte.Card;
 import it.unive.dais.po1.game.carte.list.CarteATerra;
+import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 
 public class BriscolaADue extends Briscola {
@@ -18,7 +19,7 @@ public class BriscolaADue extends Briscola {
      * @requires g1!=null && g2!=null && g1!=g2 //precondizione
      * @ensures return==g1 || return==g2 || return==null
      */
-    public GiocatoreBriscola partita() {
+    public GiocatoreBriscola partita() throws MissingCardException {
         //controllare che g1!=null && g2!=null && g1!=g2
         //@invariant mazzo.mazzo!=null
         //@invariant mazzo.cartaCorrente>=0 mazzo.cartaCorrente<mazzo.mazzo.length
@@ -73,7 +74,7 @@ public class BriscolaADue extends Briscola {
         return false;
     }
 
-    private GiocatoreBriscola giocaMano(GiocatoreBriscola primoDiMano, GiocatoreBriscola secondoDiMano) {
+    private GiocatoreBriscola giocaMano(GiocatoreBriscola primoDiMano, GiocatoreBriscola secondoDiMano) throws MissingCardException {
         CarteATerra c = new CarteATerra();
         Card prima = primoDiMano.getCard(c, this);
         c.add(prima);

@@ -1,5 +1,6 @@
 package it.unive.dais.po1.game.gioco;
 
+import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 import it.unive.dais.po1.game.gioco.briscola.BriscolaADue;
 
@@ -12,7 +13,7 @@ public class Torneo {
         this.partecipanti = partecipanti;
     }
 
-    public void giocaTorneoBriscola() {
+    public void giocaTorneoBriscola() throws MissingCardException {
         int[] punti = new int[partecipanti.length];
         for (int i = 0; i < partecipanti.length; i++) {
             for(int j=0; j< partecipanti.length; j++) {

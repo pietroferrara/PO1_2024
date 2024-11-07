@@ -4,6 +4,7 @@ import it.unive.dais.po1.game.carte.*;
 import it.unive.dais.po1.game.carte.list.Addable;
 import it.unive.dais.po1.game.carte.list.AvailableSpots;
 import it.unive.dais.po1.game.carte.list.CarteRaccolte;
+import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 import it.unive.dais.po1.game.carte.trevigiane.MazzoTrevigiano;
 import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
@@ -22,7 +23,7 @@ abstract public class Briscola {
      }
 
 
-     abstract public GiocatoreBriscola partita();
+     abstract public GiocatoreBriscola partita() throws MissingCardException;
 
      public boolean prende(Card first, Card second) {
          if(first.isErrata() || second.isErrata()) {
@@ -98,7 +99,7 @@ abstract public class Briscola {
         return puntiTotali;
     }
 
-    protected void getInitialCards(GiocatoreBriscola g1) {
+    protected void getInitialCards(GiocatoreBriscola g1) throws MissingCardException {
         g1.giveCard(mazzo.pop());
         g1.giveCard(mazzo.pop());
         g1.giveCard(mazzo.pop());
