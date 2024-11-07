@@ -22,11 +22,8 @@ final public class GiocatoreBriscolaNaive extends GiocatoreBriscola {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    @Override public Card<SemeTrevigiano, FiguraTrevigiana> getCard(CarteATerra<Card<SemeTrevigiano, FiguraTrevigiana>> otherCard, Briscola game) throws MissingCardException {
+    @MetodoGioco @Override public Card<SemeTrevigiano, FiguraTrevigiana> getCard(CarteATerra<Card<SemeTrevigiano, FiguraTrevigiana>> otherCard, Briscola game) throws MissingCardException {
         return super.getFirstCard();
     }
-
-
-
 
 }

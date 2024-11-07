@@ -6,6 +6,7 @@ import it.unive.dais.po1.game.carte.list.MissingCardException;
 import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
 import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
+import it.unive.dais.po1.game.giocatori.briscola.MetodoGioco;
 import it.unive.dais.po1.game.gioco.briscola.Briscola;
 
 /**
@@ -24,7 +25,7 @@ public class GiocatoreBriscolaIntelligente extends GiocatoreBriscola {
      * Ritorna una carta e la elimina tra quelle che ha nel mazzo
      * @return la carta scartata
      */
-    @Override public Card<SemeTrevigiano, FiguraTrevigiana> getCard(CarteATerra<Card<SemeTrevigiano, FiguraTrevigiana>> carteATerra, Briscola game) throws MissingCardException {
+    @MetodoGioco(forzaGioco = 10) @Override public Card<SemeTrevigiano, FiguraTrevigiana> getCard(CarteATerra<Card<SemeTrevigiano, FiguraTrevigiana>> carteATerra, Briscola game) throws MissingCardException {
         if(carteATerra.count() == 1) {
             Card otherCard = carteATerra.get(0);
             for (int i = 0; i < carte.count(); i++) {

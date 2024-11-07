@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: it.unive.dais.po1.game.Test
+Main-Class: it.unive.dais.po1.game.Runner
 

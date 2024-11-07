@@ -1,26 +1,12 @@
 package it.unive.dais.po1.game;
 
-import it.unive.dais.po1.game.carte.Card;
-import it.unive.dais.po1.game.carte.Figura;
-import it.unive.dais.po1.game.carte.Seme;
-import it.unive.dais.po1.game.carte.francesi.FiguraFrancese;
-import it.unive.dais.po1.game.carte.francesi.SemeFrancese;
-import it.unive.dais.po1.game.carte.list.CarteInMano;
 import it.unive.dais.po1.game.carte.list.MissingCardException;
-import it.unive.dais.po1.game.carte.trevigiane.FiguraTrevigiana;
-import it.unive.dais.po1.game.carte.trevigiane.MazzoTrevigiano;
-import it.unive.dais.po1.game.carte.trevigiane.SemeTrevigiano;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscola;
 import it.unive.dais.po1.game.giocatori.briscola.avanzati.GiocatoreBriscolaIntelligente;
 import it.unive.dais.po1.game.giocatori.briscola.GiocatoreBriscolaNaive;
-import it.unive.dais.po1.game.gioco.briscola.Briscola;
 import it.unive.dais.po1.game.gioco.briscola.BriscolaADue;
-import it.unive.dais.po1.game.gioco.briscola.BriscolaAQuattro;
-import it.unive.dais.po1.methoddispatch.A;
 
-import java.util.*;
-
-public class Test {
+public class Runner {
 
     public static void main(String[] args) {
 
