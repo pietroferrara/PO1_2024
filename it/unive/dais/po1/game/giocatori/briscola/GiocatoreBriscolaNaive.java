@@ -26,4 +26,8 @@ final public class GiocatoreBriscolaNaive extends GiocatoreBriscola {
         return super.getFirstCard();
     }
 
+    public void foo(int i) {
+
+    }
+
 }
